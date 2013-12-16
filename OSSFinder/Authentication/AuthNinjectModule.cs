@@ -1,4 +1,5 @@
 ﻿using Ninject.Modules;
+using OSSFinder.Authentication.Providers;
 
 namespace OSSFinder.Authentication
 {

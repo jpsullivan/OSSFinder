@@ -6,6 +6,7 @@ using Ninject;
 using Ninject.Modules;
 using Ninject.Web.Common;
 using OSSFinder.Configuration;
+using OSSFinder.Infrastructure;
 using PoliteCaptcha;
 
 namespace OSSFinder.App_Start
