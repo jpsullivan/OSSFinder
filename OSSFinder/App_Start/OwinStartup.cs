@@ -58,6 +58,7 @@ namespace OSSFinder.App_Start
                     Authenticator.GetName(typeof(LocalUserAuthenticator)),
                     StringComparison.OrdinalIgnoreCase))
                 .Select(p => p.Value);
+
             foreach (var auther in nonCookieAuthers)
             {
                 auther.Startup(config, app);
