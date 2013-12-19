@@ -1,11 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Globalization;
+using System.Diagnostics;
 using System.Linq;
+using System.Web;
+using OSSFinder.Core;
+using OSSFinder.Core.Auditing;
+using OSSFinder.Core.Entities;
+using OSSFinder.Diagnostics;
+using System.Globalization;
+using Microsoft.Owin;
 using System.Security.Claims;
-using System.Threading.Tasks;
+using OSSFinder.Configuration;
+using Microsoft.Owin.Security;
+using OSSFinder.Authentication.Providers;
 using System.Web.Mvc;
+using System.Threading.Tasks;
+using OSSFinder.Infrastructure;
+using OSSFinder.Infrastructure.Extensions;
+using OSSFinder.Models.ViewModels;
+using OSSFinder.Services;
 
 namespace OSSFinder.Authentication
 {

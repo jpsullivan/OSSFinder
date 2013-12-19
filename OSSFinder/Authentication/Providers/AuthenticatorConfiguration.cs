@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.Owin.Security;
 using OSSFinder.Configuration;
+using OSSFinder.Infrastructure.Extensions;
 
 namespace OSSFinder.Authentication.Providers
 {

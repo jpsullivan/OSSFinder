@@ -6,9 +6,13 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.Owin;
 using Ninject;
+using OSSFinder.App_Start;
 using OSSFinder.Authentication;
 using System.Net;
 using OSSFinder.Configuration;
+using OSSFinder.Core.Entities;
+using OSSFinder.Infrastructure;
+using OSSFinder.Infrastructure.Extensions;
 
 namespace OSSFinder.Controllers
 {

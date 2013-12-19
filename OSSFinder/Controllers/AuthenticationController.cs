@@ -1,15 +1,17 @@
 ﻿using System;
-using System.Web;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using OSSFinder.Authentication;
-using System.Threading.Tasks;
-using System.Security.Claims;
-using System.Text.RegularExpressions;
-using System.Diagnostics;
+using OSSFinder.Core.Entities;
 using OSSFinder.Infrastructure;
-using System.Net.Mail;
+using OSSFinder.Infrastructure.Attributes;
+using OSSFinder.Infrastructure.Extensions;
+using OSSFinder.Models.ViewModels;
+using OSSFinder.Services.Interfaces;
 
 namespace OSSFinder.Controllers
 {

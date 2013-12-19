@@ -1,14 +1,20 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
+using System.Net.Mail;
+using System.Security;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Microsoft.Owin;
+using OSSFinder.Core.Entities;
 using OSSFinder.Infrastructure.Helpers;
 
 namespace OSSFinder.Infrastructure.Extensions
@@ -758,5 +764,150 @@ namespace OSSFinder.Infrastructure.Extensions
         }
 
         #endregion
+
+        public static void AddOrSet<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> self, TKey key, TValue val)
+        {
+            self.AddOrUpdate(key, val, (_, __) => val);
+        }
+
+        public static SecureString ToSecureString(this string str)
+        {
+            SecureString output = new SecureString();
+            foreach (char c in str)
+            {
+                output.AppendChar(c);
+            }
+            output.MakeReadOnly();
+            return output;
+        }
+
+        public static string ToStringOrNull(this object obj)
+        {
+            if (obj == null)
+            {
+                return null;
+            }
+
+            return obj.ToString();
+        }
+
+        public static string ToEncodedUrlStringOrNull(this Uri uri)
+        {
+            if (uri == null)
+            {
+                return null;
+            }
+
+            return uri.AbsoluteUri;
+        }
+
+        public static string ToStringSafe(this object obj)
+        {
+            if (obj != null)
+            {
+                return obj.ToString();
+            }
+            return String.Empty;
+        }
+
+        public static string Flatten(this IEnumerable<string> list)
+        {
+            if (list == null)
+            {
+                return String.Empty;
+            }
+
+            return String.Join(", ", list.ToArray());
+        }
+
+        public static bool IsInThePast(this DateTime? date)
+        {
+            return date.Value.IsInThePast();
+        }
+
+        public static bool IsInThePast(this DateTime date)
+        {
+            return date < DateTime.UtcNow;
+        }
+
+        public static MailAddress ToMailAddress(this User user)
+        {
+            return new MailAddress(user.EmailAddress, user.Username);
+        }
+
+        public static string GetClaimOrDefault(this ClaimsPrincipal self, string claimType)
+        {
+            return self.Claims.GetClaimOrDefault(claimType);
+        }
+
+        public static string GetClaimOrDefault(this ClaimsIdentity self, string claimType)
+        {
+            return self.Claims.GetClaimOrDefault(claimType);
+        }
+
+        public static string GetClaimOrDefault(this IEnumerable<Claim> self, string claimType)
+        {
+            return self
+                .Where(c => String.Equals(c.Type, claimType, StringComparison.OrdinalIgnoreCase))
+                .Select(c => c.Value)
+                .FirstOrDefault();
+        }
+
+        // This is a method because the first call will perform a database call
+        /// <summary>
+        /// Get the current user, from the database, or if someone in this request has already
+        /// retrieved it, from memory. This will NEVER return null. It will throw an exception
+        /// that will yield an HTTP 401 if it would return null. As a result, it should only
+        /// be called in actions with the Authorize attribute or a Request.IsAuthenticated check
+        /// </summary>
+        /// <returns>The current user</returns>
+        public static User GetCurrentUser(this IOwinContext self)
+        {
+            if (self.Request.User == null)
+            {
+                return null;
+            }
+
+            User user = null;
+            object obj;
+            if (self.Environment.TryGetValue(Constants.CurrentUserOwinEnvironmentKey, out obj))
+            {
+                user = obj as User;
+            }
+
+            if (user == null)
+            {
+                user = LoadUser(self);
+                self.Environment[Constants.CurrentUserOwinEnvironmentKey] = user;
+            }
+
+            if (user == null)
+            {
+                // Unauthorized! If we get here it's because a valid session token was presented, but the
+                // user doesn't exist any more. So we just have a generic error.
+                throw new HttpException(401, Strings.Unauthorized);
+            }
+
+            return user;
+        }
+
+        private static User LoadUser(IOwinContext context)
+        {
+            var principal = context.Authentication.User;
+            if (principal != null)
+            {
+                // Try to authenticate with the user name
+                string userName = principal.GetClaimOrDefault(ClaimTypes.Name);
+
+                if (!String.IsNullOrEmpty(userName))
+                {
+                    return DependencyResolver
+                        .Current
+                        .GetService<UserService>()
+                        .FindByUsername(userName);
+                }
+            }
+            return null; // No user logged in, or credentials could not be resolved
+        }
     }
 }
