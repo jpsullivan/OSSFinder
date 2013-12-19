@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using OSSFinder.Authentication;
 using OSSFinder.Configuration;
+using OSSFinder.Core;
+using OSSFinder.Core.Entities;
+using OSSFinder.Infrastructure;
+using OSSFinder.Infrastructure.Extensions;
+using OSSFinder.Models.ViewModels;
+using OSSFinder.Services;
+using OSSFinder.Services.Interfaces;
 
 namespace OSSFinder.Controllers
 {

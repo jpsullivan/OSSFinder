@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.Blob.Protocol;
+using OSSFinder.Configuration;
+using OSSFinder.Infrastructure.Exceptions;
 using OSSFinder.Services.Interfaces;
 
 namespace OSSFinder.Services
