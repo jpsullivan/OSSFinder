@@ -138,9 +138,9 @@ namespace OSSFinder.App_Start
             Bind<IReportService>()
                 .ToMethod(context => new CloudReportService(configuration.Current.AzureStorageConnectionString))
                 .InSingletonScope();
-            Bind<IStatisticsService>()
-                .To<JsonStatisticsService>()
-                .InSingletonScope();
+//            Bind<IStatisticsService>()
+//                .To<JsonStatisticsService>()
+//                .InSingletonScope();
 
             string instanceId;
             try

@@ -16,21 +16,21 @@ namespace OSSFinder.Migrations
 
         public override void Up()
         {
-            Stream stream = typeof(ExecuteELMAHSql).Assembly.GetManifestResourceStream(_sqlFile);
-            using (var streamReader = new StreamReader(stream))
-            {
-                var statements = streamReader.ReadToEnd().Split(Go, StringSplitOptions.RemoveEmptyEntries);
-
-                foreach (var statement in statements)
-                {
-                    if (String.IsNullOrWhiteSpace(statement))
-                    {
-                        continue;
-                    }
-
-                    Sql(statement);
-                }
-            }
+//            Stream stream = typeof(ExecuteELMAHSql).Assembly.GetManifestResourceStream(_sqlFile);
+//            using (var streamReader = new StreamReader(stream))
+//            {
+//                var statements = streamReader.ReadToEnd().Split(Go, StringSplitOptions.RemoveEmptyEntries);
+//
+//                foreach (var statement in statements)
+//                {
+//                    if (String.IsNullOrWhiteSpace(statement))
+//                    {
+//                        continue;
+//                    }
+//
+//                    Sql(statement);
+//                }
+//            }
         }
 
         public override void Down()

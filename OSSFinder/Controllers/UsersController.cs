@@ -20,15 +20,18 @@ namespace OSSFinder.Controllers
     public partial class UsersController : AppController
     {
         public IUserService UserService { get; protected set; }
+        public IMessageService MessageService { get; protected set; }
         public IAppConfiguration Config { get; protected set; }
         public AuthenticationService AuthService { get; protected set; }
 
         public UsersController(
             IUserService userService,
+            IMessageService messageService,
             IAppConfiguration config,
             AuthenticationService authService)
         {
             UserService = userService;
+            MessageService = messageService;
             Config = config;
             AuthService = authService;
         }
@@ -173,7 +176,7 @@ namespace OSSFinder.Controllers
                 MessageService.SendCredentialAddedNotice(cred.User, cred);
             }
 
-            return RedirectToAction(MVC.Users.PasswordChanged());
+            return RedirectToAction("PasswordChanged");
         }
 
         [Authorize]
@@ -239,18 +242,14 @@ namespace OSSFinder.Controllers
                 return HttpNotFound();
             }
 
-            var packages = PackageService.FindPackagesByOwner(user, includeUnlisted: false)
-                .Select(p => new PackageViewModel(p)
-                {
-                    DownloadCount = p.PackageRegistration.DownloadCount,
-                    Version = null
-                }).ToList();
+//            var packages = PackageService.FindPackagesByOwner(user, includeUnlisted: false)
+//                .Select(p => new PackageViewModel(p)
+//                {
+//                    DownloadCount = p.PackageRegistration.DownloadCount,
+//                    Version = null
+//                }).ToList();
 
-            var model = new UserProfileModel(user)
-            {
-                Packages = packages,
-                TotalPackageDownloadCount = packages.Sum(p => p.TotalDownloadCount),
-            };
+            var model = new UserProfileModel(user);
 
             return View(model);
         }
@@ -284,7 +283,7 @@ namespace OSSFinder.Controllers
             if (String.Equals(model.ChangeEmail.NewEmail, user.LastSavedEmailAddress, StringComparison.OrdinalIgnoreCase))
             {
                 // email address unchanged - accept
-                return RedirectToAction(MVC.Users.Account());
+                return RedirectToAction("Account");
             }
 
             try
@@ -310,7 +309,7 @@ namespace OSSFinder.Controllers
                 TempData["Message"] = Strings.EmailUpdated;
             }
 
-            return RedirectToAction(MVC.Users.Account());
+            return RedirectToAction("Account");
         }
 
         [HttpPost]
@@ -377,23 +376,6 @@ namespace OSSFinder.Controllers
             return View();
         }
 
-        [Authorize]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public virtual async Task<ActionResult> GenerateApiKey()
-        {
-            // Get the user
-            var user = GetCurrentUser();
-
-            // Generate an API Key
-            var apiKey = Guid.NewGuid();
-
-            // Add/Replace the API Key credential, and save to the database
-            TempData["Message"] = Strings.ApiKeyReset;
-            await AuthService.ReplaceCredential(user, CredentialBuilder.CreateV1ApiKey(apiKey));
-            return RedirectToAction("Account");
-        }
-
         private async Task<ActionResult> RemoveCredential(User user, Credential cred, string message)
         {
             // Count login credentials
@@ -422,11 +404,9 @@ namespace OSSFinder.Controllers
         {
             // Load Credential info
             var user = GetCurrentUser();
-            var curatedFeeds = CuratedFeedService.GetFeedsForManager(user.Key);
             var creds = user.Credentials.Select(c => AuthService.DescribeCredential(c)).ToList();
 
             model.Credentials = creds;
-            model.CuratedFeeds = curatedFeeds.Select(f => f.Name);
             return View("Account", model);
         }
 
@@ -448,7 +428,7 @@ namespace OSSFinder.Controllers
             MessageService.SendPasswordResetInstructions(user, resetPasswordUrl, forgotPassword);
 
             TempData["Email"] = user.EmailAddress;
-            return RedirectToAction(MVC.Users.PasswordSent());
+            return RedirectToAction("PasswordSent");
         }
     }
 }

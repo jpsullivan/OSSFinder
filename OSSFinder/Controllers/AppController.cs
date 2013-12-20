@@ -26,7 +26,7 @@ namespace OSSFinder.Controllers
             set { _overrideContext = value; }
         }
 
-        public NuGetContext NuGetContext { get; private set; }
+        public OSSFinderContext OssFinderContext { get; private set; }
 
         public new ClaimsPrincipal User
         {
@@ -35,7 +35,7 @@ namespace OSSFinder.Controllers
 
         protected AppController()
         {
-            NuGetContext = new NuGetContext(this);
+            OssFinderContext = new OSSFinderContext(this);
         }
 
         protected internal virtual T GetService<T>()
@@ -54,14 +54,14 @@ namespace OSSFinder.Controllers
         }
     }
 
-    public class NuGetContext
+    public class OSSFinderContext
     {
         private Lazy<User> _currentUser;
 
         public ConfigurationService Config { get; private set; }
         public User CurrentUser { get { return _currentUser.Value; } }
 
-        public NuGetContext(AppController ctrl)
+        public OSSFinderContext(AppController ctrl)
         {
             Config = Container.Kernel.TryGet<ConfigurationService>();
 

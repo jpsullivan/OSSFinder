@@ -19,6 +19,7 @@ using Ninject.Web.Common;
 using OSSFinder;
 using OSSFinder.App_Start;
 using OSSFinder.Configuration;
+using OSSFinder.Core.Entities;
 using OSSFinder.Infrastructure;
 using OSSFinder.Infrastructure.Attributes;
 using OSSFinder.Infrastructure.Filters;
@@ -43,6 +44,7 @@ namespace OSSFinder.App_Start
 
             NinjectPreStart();
             ElmahPreStart();
+            GlimpsePreStart();
 
             try
             {
@@ -61,6 +63,7 @@ namespace OSSFinder.App_Start
         {
             // Get configuration from the kernel
             var config = Container.Kernel.Get<IAppConfiguration>();
+            DbMigratorPostStart();
             AppPostStart();
         }
 
@@ -95,6 +98,11 @@ namespace OSSFinder.App_Start
             };
 
             return ret;
+        }
+
+        private static void GlimpsePreStart()
+        {
+            DynamicModuleUtility.RegisterModule(typeof(Glimpse.AspNet.HttpModule));
         }
 
         private static void CloudPreStart()
@@ -141,6 +149,12 @@ namespace OSSFinder.App_Start
 
             // MUST be the last route as a catch-all!
             routes.MapRoute("{*url}", new { controller = "Error", action = "PageNotFound" }.ToString());
+        }
+
+        private static void DbMigratorPostStart()
+        {
+            // Don't run migrations, ever!
+            Database.SetInitializer<EntitiesContext>(null);
         }
 
         private static void NinjectPreStart()

@@ -21,10 +21,10 @@ namespace OSSFinder.Migrations
                 context.SaveChanges();
             }
 
-            var gallerySettings = context.Set<GallerySetting>();
+            var gallerySettings = context.Set<SiteSetting>();
             if (!gallerySettings.Any())
             {
-                gallerySettings.Add(new GallerySetting { Key = 1 });
+                gallerySettings.Add(new SiteSetting { Key = 1 });
                 context.SaveChanges();
             }
         }

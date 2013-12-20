@@ -117,27 +117,6 @@ namespace OSSFinder.Infrastructure.Extensions
 
         #endregion
 
-        #region Encode
-
-        /// <summary>
-        /// Converts a string to a string of another encoding
-        /// </summary>
-        /// <param name="Input">input string</param>
-        /// <param name="OriginalEncodingUsing">The type of encoding the string is currently using (defaults to ASCII)</param>
-        /// <param name="EncodingUsing">The type of encoding the string is converted into (defaults to UTF8)</param>
-        /// <returns>string of the byte array</returns>
-        public static string Encode(this string Input, Encoding OriginalEncodingUsing = null, Encoding EncodingUsing = null)
-        {
-            if (string.IsNullOrEmpty(Input))
-                return "";
-            OriginalEncodingUsing = OriginalEncodingUsing.NullCheck(new ASCIIEncoding());
-            EncodingUsing = EncodingUsing.NullCheck(new UTF8Encoding());
-            return Encoding.Convert(OriginalEncodingUsing, EncodingUsing, Input.ToByteArray(OriginalEncodingUsing))
-                           .ToEncodedString(EncodingUsing);
-        }
-
-        #endregion
-
         #region ExpandTabs
 
         /// <summary>
@@ -189,34 +168,6 @@ namespace OSSFinder.Infrastructure.Extensions
         public static string FormatString(this string Input, string Format)
         {
             return new GenericStringFormatter().Format(Input, Format);
-        }
-
-        #endregion
-
-        #region FromBase64
-
-        /// <summary>
-        /// Converts base 64 string based on the encoding passed in
-        /// </summary>
-        /// <param name="Input">Input string</param>
-        /// <param name="EncodingUsing">The type of encoding the string is using (defaults to UTF8)</param>
-        /// <returns>string in the encoding format</returns>
-        public static string FromBase64(this string Input, Encoding EncodingUsing)
-        {
-            if (string.IsNullOrEmpty(Input))
-                return "";
-            byte[] TempArray = Convert.FromBase64String(Input);
-            return EncodingUsing.NullCheck(new UTF8Encoding()).GetString(TempArray);
-        }
-
-        /// <summary>
-        /// Converts base 64 string to a byte array
-        /// </summary>
-        /// <param name="Input">Input string</param>
-        /// <returns>A byte array equivalent of the base 64 string</returns>
-        public static byte[] FromBase64(this string Input)
-        {
-            return string.IsNullOrEmpty(Input) ? new byte[0] : Convert.FromBase64String(Input);
         }
 
         #endregion
@@ -344,41 +295,6 @@ namespace OSSFinder.Infrastructure.Extensions
 
         #endregion
 
-        #region NextSequence
-
-        /// <summary>
-        /// Function that is useful for generating a string in a series. so a becomes b, b becomes c, etc. 
-        /// and after hitting the max character, it goes to two characters (so ~ becomes aa, then ab, ac, etc).
-        /// </summary>
-        /// <param name="Sequence">Current sequence</param>
-        /// <param name="Min">Min character</param>
-        /// <param name="Max">Max character</param>
-        /// <returns>The next item in the sequence</returns>
-        public static string NextSequence(this string Sequence, char Min = ' ', char Max = '~')
-        {
-            byte[] Values = Sequence.ToByteArray();
-            byte MinValue = (byte)Min;
-            byte MaxValue = (byte)Max;
-            byte Remainder = 1;
-            for (int x = Sequence.Length - 1; x >= 0; --x)
-            {
-                Values[x] += Remainder;
-                Remainder = 0;
-                if (Values[x] > MaxValue)
-                {
-                    Remainder = 1;
-                    Values[x] = (byte)Min;
-                }
-                else
-                    break;
-            }
-            if (Remainder == 1)
-                return Min + Values.ToEncodedString();
-            return Values.ToEncodedString();
-        }
-
-        #endregion
-
         #region NumericOnly
 
         /// <summary>
@@ -405,24 +321,6 @@ namespace OSSFinder.Infrastructure.Extensions
         public static int NumberTimesOccurs(this string Input, string Match)
         {
             return string.IsNullOrEmpty(Input) ? 0 : new Regex(Match).Matches(Input).Count;
-        }
-
-        #endregion
-
-        #region RegexFormat
-
-        /// <summary>
-        /// Uses a regex to format the input string
-        /// </summary>
-        /// <param name="Input">Input string</param>
-        /// <param name="Format">Regex string used to</param>
-        /// <param name="OutputFormat">Output format</param>
-        /// <param name="Options">Regex options</param>
-        /// <returns>The input string formatted by using the regex string</returns>
-        public static string RegexFormat(this string Input, string Format, string OutputFormat, RegexOptions Options = RegexOptions.None)
-        {
-            Input.ThrowIfNullOrEmpty("Input");
-            return Regex.Replace(Input, Format, OutputFormat, Options);
         }
 
         #endregion
@@ -455,25 +353,6 @@ namespace OSSFinder.Infrastructure.Extensions
                 return "";
             Length = Input.Length > Length ? Length : Input.Length;
             return Input.Substring(Input.Length - Length, Length);
-        }
-
-        #endregion
-
-        #region StripLeft
-
-        /// <summary>
-        /// Strips out any of the characters specified starting on the left side of the input string (stops when a character not in the list is found)
-        /// </summary>
-        /// <param name="input">Input string</param>
-        /// <param name="characters">Characters to string (defaults to a space)</param>
-        /// <returns>The Input string with specified characters stripped out</returns>
-        public static string StripLeft(this string input, string characters = " ")
-        {
-            if (input.IsNullOrEmpty())
-                return input;
-            if (characters.IsNullOrEmpty())
-                return input;
-            return input.SkipWhile(characters.Contains).ToString(x => x.ToString(CultureInfo.InvariantCulture), "");
         }
 
         #endregion
@@ -535,39 +414,6 @@ namespace OSSFinder.Infrastructure.Extensions
                 .Replace("`", "\'")
                 .Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;")
                 .Replace("\"", "&quot;").Replace("\'", "&apos;");
-        }
-
-        #endregion
-
-        #region ToBase64
-
-        /// <summary>
-        /// Converts from the specified encoding to a base 64 string
-        /// </summary>
-        /// <param name="Input">Input string</param>
-        /// <param name="OriginalEncodingUsing">The type of encoding the string is using (defaults to UTF8)</param>
-        /// <returns>Bas64 string</returns>
-        public static string ToBase64(this string Input, Encoding OriginalEncodingUsing = null)
-        {
-            if (string.IsNullOrEmpty(Input))
-                return "";
-            byte[] TempArray = OriginalEncodingUsing.NullCheck(new UTF8Encoding()).GetBytes(Input);
-            return Convert.ToBase64String(TempArray);
-        }
-
-        #endregion
-
-        #region ToByteArray
-
-        /// <summary>
-        /// Converts a string to a byte array
-        /// </summary>
-        /// <param name="Input">input string</param>
-        /// <param name="EncodingUsing">The type of encoding the string is using (defaults to UTF8)</param>
-        /// <returns>the byte array representing the string</returns>
-        public static byte[] ToByteArray(this string Input, Encoding EncodingUsing = null)
-        {
-            return string.IsNullOrEmpty(Input) ? null : EncodingUsing.NullCheck(new UTF8Encoding()).GetBytes(Input);
         }
 
         #endregion
