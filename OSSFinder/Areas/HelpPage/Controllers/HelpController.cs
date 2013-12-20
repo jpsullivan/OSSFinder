@@ -8,7 +8,7 @@ namespace OSSFinder.Areas.HelpPage.Controllers
     /// <summary>
     /// The controller that will handle requests for the help page.
     /// </summary>
-    public class HelpController : Controller
+    public partial class HelpController : Controller
     {
         public HelpController()
             : this(GlobalConfiguration.Configuration)
@@ -22,12 +22,12 @@ namespace OSSFinder.Areas.HelpPage.Controllers
 
         public HttpConfiguration Configuration { get; private set; }
 
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return View(Configuration.Services.GetApiExplorer().ApiDescriptions);
         }
 
-        public ActionResult Api(string apiId)
+        public virtual ActionResult Api(string apiId)
         {
             if (!String.IsNullOrEmpty(apiId))
             {

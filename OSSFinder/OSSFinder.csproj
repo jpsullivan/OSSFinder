@@ -44,14 +44,12 @@
     <Reference Include="AnglicanGeek.MarkdownMailer">
       <HintPath>..\packages\AnglicanGeek.MarkdownMailer.1.2\lib\net40\AnglicanGeek.MarkdownMailer.dll</HintPath>
     </Reference>
-    <Reference Include="Dapper">
-      <HintPath>..\packages\Dapper.1.13\lib\net45\Dapper.dll</HintPath>
-    </Reference>
     <Reference Include="Elmah">
       <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
     </Reference>
-    <Reference Include="Elmah.Contrib.Mvc">
-      <HintPath>..\packages\Elmah.Contrib.Mvc.2.1\lib\net45\Elmah.Contrib.Mvc.dll</HintPath>
+    <Reference Include="Elmah.Contrib.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Elmah.Contrib.Mvc.1.0\lib\net40\Elmah.Contrib.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Glimpse.Ado">
       <HintPath>..\packages\Glimpse.Ado.1.7.0\lib\net45\Glimpse.Ado.dll</HintPath>
@@ -127,9 +125,6 @@
     </Reference>
     <Reference Include="Microsoft.WindowsFabric.Data.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAzure.Caching.1.7.0.0\lib\net35-full\Microsoft.WindowsFabric.Data.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="MiniProfiler">
-      <HintPath>..\packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -251,7 +246,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\Container.cs" />
     <Compile Include="App_Start\ContainerBindings.cs" />
-    <Compile Include="App_Start\MiniProfiler.cs" />
     <Compile Include="App_Start\OwinStartup.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -269,6 +263,9 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="AuthenticationController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Authentication\AuthenticatedUser.cs" />
     <Compile Include="Authentication\AuthenticationService.cs" />
     <Compile Include="Authentication\AuthenticationTypes.cs" />
@@ -298,6 +295,18 @@
     <Compile Include="Diagnostics\NinjectGlimpseServiceLocator.cs" />
     <Compile Include="Diagnostics\NullDiagnosticsSource.cs" />
     <Compile Include="Diagnostics\TraceDiagnosticsSource.cs" />
+    <Compile Include="ErrorsController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HelpPage.HelpController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HelpPage.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Infrastructure\AntiForgeryErrorFilter.cs" />
     <Compile Include="Infrastructure\Attributes\HintAttribute.cs" />
     <Compile Include="Infrastructure\Attributes\RequiresAccountConfirmationAttribute.cs" />
@@ -366,12 +375,23 @@
     <Compile Include="Services\LocalFileReference.cs" />
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="T4MVC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="UrlExtensions.cs" />
+    <Compile Include="UsersController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -499,6 +519,15 @@
     <Content Include="Views\Users\Profiles.cshtml" />
     <Content Include="Views\Users\ResetPassword.cshtml" />
     <Content Include="Views\Users\Thanks.cshtml" />
+    <Content Include="T4MVC.tt.settings.t4" />
+    <Content Include="T4MVC.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4MVC.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Errors\CookieError.cshtml" />
+    <Content Include="Views\Errors\InternalError.cshtml" />
+    <Content Include="Views\Errors\NotFound.cshtml" />
+    <Content Include="Views\Errors\ReadOnlyMode.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -517,6 +546,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

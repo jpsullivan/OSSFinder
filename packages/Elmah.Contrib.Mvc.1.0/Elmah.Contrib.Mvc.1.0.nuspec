@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Elmah.Contrib.Mvc</id>
+    <version>1.0</version>
+    <title>Elmah.Contrib.Mvc</title>
+    <authors>Fabian Vilers</authors>
+    <owners>Fabian Vilers</owners>
+    <licenseUrl>http://www.opensource.org/licenses/MS-PL</licenseUrl>
+    <projectUrl>http://stackoverflow.com/questions/766610/how-to-get-elmah-to-work-with-asp-net-mvc-handleerror-attribute/779961#779961</projectUrl>
+    <iconUrl>http://www.dev-one.com/Content/Images/apple-touch-icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Elmah.Contrib.Mvc was designed to add ease-of-use to Elmah inside ASP.NET MVC projects</description>
+    <summary>Elmah.Contrib.Mvc was designed to add ease-of-use to Elmah inside ASP.NET MVC projects</summary>
+    <tags>ASP.NET MVC Elmah</tags>
+    <dependencies>
+      <dependency id="elmah" version="1.1" />
+    </dependencies>
+  </metadata>
+</package>
