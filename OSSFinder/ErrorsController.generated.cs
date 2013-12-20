@@ -57,6 +57,10 @@ namespace OSSFinder.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string CookieError = "~/Views/Errors/CookieError.cshtml";
+            public readonly string InternalError = "~/Views/Errors/InternalError.cshtml";
+            public readonly string NotFound = "~/Views/Errors/NotFound.cshtml";
+            public readonly string ReadOnlyMode = "~/Views/Errors/ReadOnlyMode.cshtml";
         }
     }
 

@@ -68,7 +68,7 @@ namespace OSSFinder.Configuration
         /// </summary>
         [Required]
         [DisplayName("SqlServer")]
-        [DefaultValue("NuGetGallery")]
+        [DefaultValue("OSSFinder")]
         public string SqlConnectionString { get; set; }
 
         /// <summary>

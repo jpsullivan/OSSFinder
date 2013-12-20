@@ -19,7 +19,7 @@ namespace OSSFinder.Core.Entities
         /// (and read only mode is don't care).
         /// </summary>
         public EntitiesContext()
-            : base("Gallery.SqlServer") // Use the connection string in a web.config (if one is found)
+            : base("OSSFinder.SqlServer") // Use the connection string in a web.config (if one is found)
         {
         }
 
