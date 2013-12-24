@@ -114,6 +114,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WindowsAzure.Caching.1.7.0.0\lib\net35-full\Microsoft.Web.DistributedCache.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Helpers.Mvc.2.0.20710.0\lib\net40\Microsoft.Web.Helpers.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
     </Reference>
@@ -356,9 +359,11 @@
     <Compile Include="Infrastructure\IoC\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\IoC\NinjectWebApiDependencyResolver.cs" />
     <Compile Include="Infrastructure\Logging\QuietLog.cs" />
+    <Compile Include="Infrastructure\OSSFinderControllerFactory.cs" />
     <Compile Include="Infrastructure\RoutePriority.cs" />
     <Compile Include="Infrastructure\SafeRedirectResult.cs" />
     <Compile Include="Infrastructure\TableErrorLog.cs" />
+    <Compile Include="Migrations\201110060711357_Initial.cs" />
     <Compile Include="Migrations\MigrationsConfiguration.cs" />
     <Compile Include="Migrations\SqlResourceMigration.cs" />
     <Compile Include="Models\StatisticsReport.cs" />
@@ -376,6 +381,7 @@
     <Compile Include="Services\CloudBlobWrapper.cs" />
     <Compile Include="Services\CloudFileReference.cs" />
     <Compile Include="Services\CloudReportService.cs" />
+    <Compile Include="Services\ContentService.cs" />
     <Compile Include="Services\CryptographyService.cs" />
     <Compile Include="Services\FileSystemFileStorageService.cs" />
     <Compile Include="Services\FileSystemService.cs" />
@@ -384,6 +390,7 @@
     <Compile Include="Services\Interfaces\ICacheService.cs" />
     <Compile Include="Services\Interfaces\ICloudBlobClient.cs" />
     <Compile Include="Services\Interfaces\ICloudBlobContainer.cs" />
+    <Compile Include="Services\Interfaces\IContentService.cs" />
     <Compile Include="Services\Interfaces\IFileReference.cs" />
     <Compile Include="Services\Interfaces\IFileStorageService.cs" />
     <Compile Include="Services\Interfaces\IFileSystemService.cs" />
@@ -550,9 +557,7 @@
     <Content Include="Views\Errors\NotFound.cshtml" />
     <Content Include="Views\Errors\ReadOnlyMode.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -587,7 +592,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>2202</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:1489/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

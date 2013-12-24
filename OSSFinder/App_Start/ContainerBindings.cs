@@ -5,6 +5,7 @@ using System.Net.Mail;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Hosting;
+using System.Web.Mvc;
 using AnglicanGeek.MarkdownMailer;
 using Elmah;
 using Microsoft.WindowsAzure.ServiceRuntime;
@@ -26,14 +27,13 @@ namespace OSSFinder.App_Start
         [SuppressMessage("Microsoft.Maintainability", "CA1502:CyclomaticComplexity", Justification = "This code is more maintainable in the same function.")]
         public override void Load()
         {
-//            // Used for suppressing any IntPtr fatal exceptions
-//            Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
-//            Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-
             var configuration = new ConfigurationService();
-            Bind<ConfigurationService>().ToMethod(context => configuration);
-            Bind<IAppConfiguration>().ToMethod(context => configuration.Current);
-            Bind<IConfigurationSource>().ToMethod(context => configuration);
+            Bind<ConfigurationService>()
+                .ToMethod(context => configuration);
+            Bind<IAppConfiguration>()
+                .ToMethod(context => configuration.Current);
+            Bind<IConfigurationSource>()
+                .ToMethod(context => configuration);
 
             if (!String.IsNullOrEmpty(configuration.Current.AzureStorageConnectionString))
             {
@@ -51,6 +51,10 @@ namespace OSSFinder.App_Start
             Bind<ICacheService>()
                 .To<HttpContextCacheService>()
                 .InRequestScope();
+
+            Bind<IContentService>()
+                .To<ContentService>()
+                .InSingletonScope();
 
             Bind<IEntitiesContext>()
                 .ToMethod(context => new EntitiesContext(configuration.Current.SqlConnectionString, readOnly: configuration.Current.ReadOnlyMode))
@@ -71,6 +75,10 @@ namespace OSSFinder.App_Start
             Bind<IFormsAuthenticationService>()
                 .To<FormsAuthenticationService>()
                 .InSingletonScope();
+
+            Bind<IControllerFactory>()
+                .To<OssFinderControllerFactory>()
+                .InRequestScope();
 
             var mailSenderThunk = new Lazy<IMailSender>(
                 () =>
@@ -140,6 +148,11 @@ namespace OSSFinder.App_Start
                 .To<FileSystemFileStorageService>()
                 .InSingletonScope();
 
+            // Ninject is doing some weird things with constructor selection without these.
+            // Anyone requesting an IReportService or IStatisticsService should be prepared
+            // to receive null anyway.
+            Bind<IReportService>().ToConstant(NullReportService.Instance);
+            Bind<IStatisticsService>().ToConstant(NullStatisticsService.Instance);
             Bind<AuditingService>().ToConstant(AuditingService.None);
         }
 
