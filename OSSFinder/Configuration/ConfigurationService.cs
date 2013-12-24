@@ -14,7 +14,7 @@ namespace OSSFinder.Configuration
 {
     public class ConfigurationService : IConfigurationSource
     {
-        private const string SettingPrefix = "Gallery.";
+        private const string SettingPrefix = "OSSFinder.";
         private const string FeaturePrefix = "Feature.";
         private const string AuthPrefix = "Auth.";
 
