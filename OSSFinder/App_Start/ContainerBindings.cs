@@ -26,9 +26,9 @@ namespace OSSFinder.App_Start
         [SuppressMessage("Microsoft.Maintainability", "CA1502:CyclomaticComplexity", Justification = "This code is more maintainable in the same function.")]
         public override void Load()
         {
-            // Used for suppressing any IntPtr fatal exceptions
-            Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
-            Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
+//            // Used for suppressing any IntPtr fatal exceptions
+//            Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
+//            Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
             var configuration = new ConfigurationService();
             Bind<ConfigurationService>().ToMethod(context => configuration);
@@ -47,6 +47,10 @@ namespace OSSFinder.App_Start
                     .ToMethod(_ => new SqlErrorLog(configuration.Current.SqlConnectionString))
                     .InSingletonScope();
             }
+
+            Bind<ICacheService>()
+                .To<HttpContextCacheService>()
+                .InRequestScope();
 
             Bind<IEntitiesContext>()
                 .ToMethod(context => new EntitiesContext(configuration.Current.SqlConnectionString, readOnly: configuration.Current.ReadOnlyMode))
@@ -113,6 +117,21 @@ namespace OSSFinder.App_Start
                 .To<MessageService>();
 
             Bind<IPrincipal>().ToMethod(context => HttpContext.Current.User);
+
+            switch (configuration.Current.StorageType)
+            {
+                case StorageType.FileSystem:
+                case StorageType.NotSpecified:
+                    ConfigureForLocalFileSystem();
+                    break;
+                case StorageType.AzureStorage:
+                    ConfigureForAzureStorage(configuration);
+                    break;
+            }
+
+            Bind<IFileSystemService>()
+                .To<FileSystemService>()
+                .InSingletonScope();
         }
 
         private void ConfigureForLocalFileSystem()

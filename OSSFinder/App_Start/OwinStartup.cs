@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using OSSFinder.App_Start;
 using Owin;
 using Ninject;
 using Microsoft.Owin;
 using Microsoft.Owin.Logging;
-using Microsoft.Owin.Extensions;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using OSSFinder.Authentication;
 using OSSFinder.Configuration;
-using System.Security.Claims;
 using OSSFinder.Authentication.Providers;
 using OSSFinder.Authentication.Providers.LocalUser;
 

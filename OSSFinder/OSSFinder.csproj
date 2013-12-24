@@ -80,6 +80,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WindowsAzure.Caching.1.7.0.0\lib\net35-full\Microsoft.ApplicationServer.Caching.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -147,6 +150,9 @@
     </Reference>
     <Reference Include="PoliteCaptcha">
       <HintPath>..\packages\PoliteCaptcha.0.4.0.1\lib\net40\PoliteCaptcha.dll</HintPath>
+    </Reference>
+    <Reference Include="QueryInterceptor">
+      <HintPath>..\packages\QueryInterceptor.0.1.4237.2400\lib\net40\QueryInterceptor.dll</HintPath>
     </Reference>
     <Reference Include="Recaptcha">
       <HintPath>..\packages\recaptcha.1.0.5.0\lib\.NetFramework 4.0\Recaptcha.dll</HintPath>
@@ -238,6 +244,12 @@
     </Reference>
     <Reference Include="WebActivator">
       <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="WebBackgrounder">
+      <HintPath>..\packages\WebBackgrounder.0.2.0\lib\net40\WebBackgrounder.dll</HintPath>
+    </Reference>
+    <Reference Include="WebBackgrounder.EntityFramework">
+      <HintPath>..\packages\WebBackgrounder.EntityFramework.0.1\lib\net40\WebBackgrounder.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -368,6 +380,8 @@
     <Compile Include="Services\FileSystemFileStorageService.cs" />
     <Compile Include="Services\FileSystemService.cs" />
     <Compile Include="Services\FormsAuthenticationService.cs" />
+    <Compile Include="Services\HttpContextCacheService.cs" />
+    <Compile Include="Services\Interfaces\ICacheService.cs" />
     <Compile Include="Services\Interfaces\ICloudBlobClient.cs" />
     <Compile Include="Services\Interfaces\ICloudBlobContainer.cs" />
     <Compile Include="Services\Interfaces\IFileReference.cs" />

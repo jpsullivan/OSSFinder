@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 
 namespace OSSFinder.Core.Entities
 {
@@ -47,7 +48,7 @@ namespace OSSFinder.Core.Entities
             Set<T>().Remove(entity);
         }
 
-#pragma warning disable 618 // TODO: remove Package.Authors completely once prodution services definitely no longer need it
+#pragma warning disable 618 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Credential>()

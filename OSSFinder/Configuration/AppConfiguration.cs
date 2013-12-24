@@ -58,6 +58,12 @@ namespace OSSFinder.Configuration
         public MailAddress GalleryOwner { get; set; }
 
         /// <summary>
+        /// Gets the storage mechanism used by this instance of the gallery
+        /// </summary>
+        [DefaultValue(StorageType.NotSpecified)]
+        public StorageType StorageType { get; set; }
+
+        /// <summary>
         /// Gets the URI of the SMTP host to use. Or null if SMTP is not being used
         /// </summary>
         [DefaultValue(null)]

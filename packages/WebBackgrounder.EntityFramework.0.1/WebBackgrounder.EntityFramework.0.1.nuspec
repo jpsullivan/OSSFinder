@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>WebBackgrounder.EntityFramework</id>
+    <version>0.1</version>
+    <title>WebBackgrounder.EntityFramework</title>
+    <authors>Outercurve Foundation</authors>
+    <owners>Outercurve Foundation</owners>
+    <licenseUrl>http://nuget.codeplex.com/license</licenseUrl>
+    <projectUrl>https://github.com/NuGet/WebBackgrounder</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>WebBackgrounder.EntityFramework is an implementation of the IJobCoordinator for WebBackgrounder that uses a Database (via EF Code First) as the synchronization mechanism (aka a mutex) for coordinating jobs.</description>
+    <summary>WebBackgrounder.EntityFramework is an implementation of the IJobCoordinator for WebBackgrounder that uses a Database (via EF Code First) as the synchronization mechanism (aka a mutex) for coordinating jobs.</summary>
+    <tags>aspnet threading background tasks jobs scheduled scheduling workers asp.net sql entity-framework database db</tags>
+    <dependencies>
+      <dependency id="EntityFramework" version="4.1.10715.0" />
+      <dependency id="WebActivator" version="1.4.4" />
+      <dependency id="WebBackgrounder" version="0.1" />
+    </dependencies>
+  </metadata>
+</package>

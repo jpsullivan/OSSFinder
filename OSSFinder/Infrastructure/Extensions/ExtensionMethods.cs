@@ -177,31 +177,6 @@ namespace OSSFinder.Infrastructure.Extensions
             return items.Any(predicate);
         }
 
-        /*
-        /// <summary>
-        /// returns the DBContext used by this ViewUserControl's Controller.
-        /// </summary>
-        public static DBContext DB(this ViewUserControl vuc)
-        {
-            var c = vuc.ViewContext.Controller as BaseController;
-            if (c == null)
-                throw new ArgumentException("Unable to find a ControllerBase on ViewUserControl " +
-                                            vuc.GetType().FullName);
-            return c.DB;
-        }
-
-        /// <summary>
-        /// returns the DBContext used by this ViewPage's Controller.
-        /// </summary>
-        public static DBContext DB(this ViewPage vp)
-        {
-            var c = vp.ViewContext.Controller as BaseController;
-            if (c == null)
-                throw new ArgumentException("Unable to find a ControllerBase on ViewPage " + vp.GetType().FullName);
-            return c.DB;
-        }
-        */
-
         /// <summary>
         ///     Adds the url to the RouteCollection with the specified defaults.
         /// </summary>

@@ -56,6 +56,11 @@ namespace OSSFinder.Configuration
         MailAddress GalleryOwner { get; set; }
 
         /// <summary>
+        /// Gets the storage mechanism used by this instance of the gallery
+        /// </summary>
+        StorageType StorageType { get; set; }
+
+        /// <summary>
         /// Gets the URI of the SMTP host to use. Or null if SMTP is not being used. Use <see cref="OSSFinder.Configuration.SmtpUri"/> to parse it
         /// </summary>
         Uri SmtpUri { get; set; }
