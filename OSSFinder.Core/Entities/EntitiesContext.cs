@@ -4,6 +4,12 @@ namespace OSSFinder.Core.Entities
 {
     public class EntitiesContext : DbContext, IEntitiesContext
     {
+        static EntitiesContext()
+        {
+            // Don't run migrations, ever!
+            Database.SetInitializer<EntitiesContext>(null);
+        }
+
         /// <summary>
         /// The NuGet Gallery code should usually use this constructor, in order to respect read only mode.
         /// </summary>

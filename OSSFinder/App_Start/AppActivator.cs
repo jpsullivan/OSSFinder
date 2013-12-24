@@ -60,7 +60,6 @@ namespace OSSFinder.App_Start
         {
             // Get configuration from the kernel
             var config = Container.Kernel.Get<IAppConfiguration>();
-            DbMigratorPostStart();
             AppPostStart();
         }
 
@@ -146,12 +145,6 @@ namespace OSSFinder.App_Start
 
             // MUST be the last route as a catch-all!
             routes.MapRoute("{*url}", new { controller = "Error", action = "PageNotFound" }.ToString());
-        }
-
-        private static void DbMigratorPostStart()
-        {
-            // Don't run migrations, ever!
-            Database.SetInitializer<EntitiesContext>(null);
         }
 
         private static void NinjectPreStart()
