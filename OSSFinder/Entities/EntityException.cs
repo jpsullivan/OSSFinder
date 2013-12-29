@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace OSSFinder.Core.Entities
+namespace OSSFinder.Entities
 {
     [Serializable]
     public class EntityException : Exception

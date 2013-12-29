@@ -1,4 +1,4 @@
-﻿using OSSFinder.Core.Entities;
+﻿using OSSFinder.Entities;
 
 namespace OSSFinder.Models.ViewModels
 {

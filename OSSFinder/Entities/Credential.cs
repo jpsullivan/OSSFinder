@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace OSSFinder.Core.Entities
+namespace OSSFinder.Entities
 {
     public class Credential : IEntity
     {

@@ -6,7 +6,7 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 
-namespace OSSFinder.Core.Auditing
+namespace OSSFinder.Auditing
 {
     public class AuditActor
     {

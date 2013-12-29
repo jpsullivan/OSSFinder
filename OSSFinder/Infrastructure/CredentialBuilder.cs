@@ -1,7 +1,7 @@
 ﻿using System;
-using OSSFinder.Core;
-using OSSFinder.Core.Entities;
+using OSSFinder.Entities;
 using OSSFinder.Services;
+using CredentialTypes = OSSFinder.Authentication.CredentialTypes;
 
 namespace OSSFinder.Infrastructure
 {

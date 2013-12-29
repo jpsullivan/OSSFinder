@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Web.Routing;
-using OSSFinder.Core.Entities;
+using OSSFinder.Entities;
 using OSSFinder.Infrastructure.Extensions;
 
 namespace OSSFinder

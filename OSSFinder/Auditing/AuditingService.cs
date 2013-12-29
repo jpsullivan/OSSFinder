@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace OSSFinder.Core.Auditing
+namespace OSSFinder.Auditing
 {
     public abstract class AuditingService
     {

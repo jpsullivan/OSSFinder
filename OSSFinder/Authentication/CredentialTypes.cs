@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OSSFinder.Core
+namespace OSSFinder.Authentication
 {
     public static class CredentialTypes
     {

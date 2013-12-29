@@ -16,7 +16,6 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort>443</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
@@ -285,6 +284,12 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Auditing\AuditActor.cs" />
+    <Compile Include="Auditing\AuditEntry.cs" />
+    <Compile Include="Auditing\AuditingService.cs" />
+    <Compile Include="Auditing\AuditRecord.cs" />
+    <Compile Include="Auditing\CloudAuditingService.cs" />
+    <Compile Include="Auditing\UserAuditRecord.cs" />
     <Compile Include="AuthenticationController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -292,6 +297,7 @@
     <Compile Include="Authentication\AuthenticationService.cs" />
     <Compile Include="Authentication\AuthenticationTypes.cs" />
     <Compile Include="Authentication\AuthNinjectModule.cs" />
+    <Compile Include="Authentication\CredentialTypes.cs" />
     <Compile Include="Authentication\Providers\Authenticator.cs" />
     <Compile Include="Authentication\Providers\AuthenticatorConfiguration.cs" />
     <Compile Include="Authentication\Providers\AuthenticatorUI.cs" />
@@ -317,6 +323,17 @@
     <Compile Include="Diagnostics\NinjectGlimpseServiceLocator.cs" />
     <Compile Include="Diagnostics\NullDiagnosticsSource.cs" />
     <Compile Include="Diagnostics\TraceDiagnosticsSource.cs" />
+    <Compile Include="Entities\Credential.cs" />
+    <Compile Include="Entities\EmailMessage.cs" />
+    <Compile Include="Entities\EntitiesContext.cs" />
+    <Compile Include="Entities\EntityException.cs" />
+    <Compile Include="Entities\EntityRepository.cs" />
+    <Compile Include="Entities\IEntitiesContext.cs" />
+    <Compile Include="Entities\IEntity.cs" />
+    <Compile Include="Entities\IEntityRepository.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\SiteSetting.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="ErrorsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -363,7 +380,19 @@
     <Compile Include="Infrastructure\RoutePriority.cs" />
     <Compile Include="Infrastructure\SafeRedirectResult.cs" />
     <Compile Include="Infrastructure\TableErrorLog.cs" />
-    <Compile Include="Migrations\MigrationsConfiguration.cs" />
+    <Compile Include="Migrations\201312290326097_Initial.cs" />
+    <Compile Include="Migrations\201312290326097_Initial.Designer.cs">
+      <DependentUpon>201312290326097_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312290346121_SiteSettings.cs" />
+    <Compile Include="Migrations\201312290346121_SiteSettings.Designer.cs">
+      <DependentUpon>201312290346121_SiteSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312290348013_ExecuteELMAHSql.cs" />
+    <Compile Include="Migrations\201312290348013_ExecuteELMAHSql.Designer.cs">
+      <DependentUpon>201312290348013_ExecuteELMAHSql.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SqlResourceMigration.cs" />
     <Compile Include="Models\StatisticsReport.cs" />
     <Compile Include="Models\ViewModels\AccountViewModel.cs" />
@@ -491,7 +520,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-    <Content Include="Infrastructure\Elmah.SqlServer.sql" />
+    <EmbeddedResource Include="Infrastructure\Elmah.SqlServer.sql" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -561,12 +590,15 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OSSFinder.Core\OSSFinder.Core.csproj">
-      <Project>{895C900D-D6AB-456B-8248-E22C06385A75}</Project>
-      <Name>OSSFinder.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201312290326097_Initial.resx">
+      <DependentUpon>201312290326097_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312290346121_SiteSettings.resx">
+      <DependentUpon>201312290346121_SiteSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312290348013_ExecuteELMAHSql.resx">
+      <DependentUpon>201312290348013_ExecuteELMAHSql.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>

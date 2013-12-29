@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using OSSFinder.Core;
+using OSSFinder.Auditing;
 using OSSFinder.Diagnostics;
 using System.Data.Entity;
 using System.Globalization;
@@ -11,12 +11,12 @@ using OSSFinder.Configuration;
 using OSSFinder.Authentication.Providers;
 using System.Web.Mvc;
 using System.Threading.Tasks;
-using OSSFinder.Core.Auditing;
-using OSSFinder.Core.Entities;
+using OSSFinder.Entities;
 using OSSFinder.Infrastructure;
 using OSSFinder.Infrastructure.Extensions;
 using OSSFinder.Models.ViewModels;
 using OSSFinder.Services;
+using IEntitiesContext = OSSFinder.Entities.IEntitiesContext;
 
 namespace OSSFinder.Authentication
 {

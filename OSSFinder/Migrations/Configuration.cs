@@ -1,13 +1,12 @@
-﻿using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using OSSFinder.Core.Entities;
+using OSSFinder.Entities;
 
 namespace OSSFinder.Migrations
 {
-    public class MigrationsConfiguration : DbMigrationsConfiguration<EntitiesContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<EntitiesContext>
     {
-        public MigrationsConfiguration()
+        public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
@@ -22,11 +21,10 @@ namespace OSSFinder.Migrations
             }
 
             var gallerySettings = context.Set<SiteSetting>();
-            if (!gallerySettings.Any())
-            {
-                gallerySettings.Add(new SiteSetting { Key = 1 });
-                context.SaveChanges();
-            }
+            if (gallerySettings.Any()) return;
+
+            gallerySettings.Add(new SiteSetting { Key = 1 });
+            context.SaveChanges();
         }
     }
 }

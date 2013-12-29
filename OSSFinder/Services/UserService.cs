@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using OSSFinder.Auditing;
+using OSSFinder.Entities;
 using Crypto = OSSFinder.Services.CryptographyService;
 using OSSFinder.Configuration;
-using OSSFinder.Core.Auditing;
-using OSSFinder.Core.Entities;
 using OSSFinder.Infrastructure.Extensions;
 using OSSFinder.Services.Interfaces;
 

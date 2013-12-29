@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 
-namespace OSSFinder.Core.Entities
+namespace OSSFinder.Entities
 {
     public interface IEntitiesContext
     {

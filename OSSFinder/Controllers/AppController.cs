@@ -10,7 +10,7 @@ using OSSFinder.App_Start;
 using OSSFinder.Authentication;
 using System.Net;
 using OSSFinder.Configuration;
-using OSSFinder.Core.Entities;
+using OSSFinder.Entities;
 using OSSFinder.Infrastructure;
 using OSSFinder.Infrastructure.Extensions;
 

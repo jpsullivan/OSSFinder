@@ -88,6 +88,15 @@ namespace OSSFinder {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to write audit record: &apos;{0}&apos;. Record already exists..
+        /// </summary>
+        internal static string CloudAuditingService_DuplicateAuditRecord {
+            get {
+                return ResourceManager.GetString("CloudAuditingService_DuplicateAuditRecord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The external account has been removed.
         /// </summary>
         internal static string CredentialRemoved {

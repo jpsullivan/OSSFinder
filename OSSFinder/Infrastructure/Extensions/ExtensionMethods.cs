@@ -14,7 +14,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Microsoft.Owin;
-using OSSFinder.Core.Entities;
+using OSSFinder.Entities;
 using OSSFinder.Infrastructure.Helpers;
 using OSSFinder.Services;
 

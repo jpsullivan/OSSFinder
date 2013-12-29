@@ -6,7 +6,7 @@ using AnglicanGeek.MarkdownMailer;
 using Elmah;
 using OSSFinder.Authentication;
 using OSSFinder.Configuration;
-using OSSFinder.Core.Entities;
+using OSSFinder.Entities;
 using OSSFinder.Infrastructure.Extensions;
 using OSSFinder.Services.Interfaces;
 

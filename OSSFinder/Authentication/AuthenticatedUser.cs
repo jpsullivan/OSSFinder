@@ -1,5 +1,5 @@
 ﻿using System;
-using OSSFinder.Core.Entities;
+using OSSFinder.Entities;
 
 namespace OSSFinder.Authentication
 {

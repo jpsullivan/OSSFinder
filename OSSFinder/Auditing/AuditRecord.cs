@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OSSFinder.Core.Auditing
+namespace OSSFinder.Auditing
 {
     public abstract class AuditRecord
     {

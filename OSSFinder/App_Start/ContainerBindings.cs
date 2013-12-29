@@ -12,13 +12,15 @@ using Microsoft.WindowsAzure.ServiceRuntime;
 using Ninject;
 using Ninject.Modules;
 using Ninject.Web.Common;
+using OSSFinder.Auditing;
 using OSSFinder.Configuration;
-using OSSFinder.Core.Auditing;
-using OSSFinder.Core.Entities;
+using OSSFinder.Entities;
 using OSSFinder.Infrastructure;
 using OSSFinder.Services;
 using OSSFinder.Services.Interfaces;
 using PoliteCaptcha;
+using EntitiesContext = OSSFinder.Entities.EntitiesContext;
+using IEntitiesContext = OSSFinder.Entities.IEntitiesContext;
 
 namespace OSSFinder.App_Start
 {

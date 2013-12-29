@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
+using OSSFinder.Infrastructure.Exceptions;
 
-namespace OSSFinder.Core.Entities
+namespace OSSFinder.Entities
 {
     public class EntitiesContext : DbContext, IEntitiesContext
     {
@@ -87,6 +88,9 @@ namespace OSSFinder.Core.Entities
                 .HasOptional<User>(em => em.FromUser)
                 .WithMany()
                 .HasForeignKey(em => em.FromUserKey);
+
+            modelBuilder.Entity<SiteSetting>()
+                .HasKey(gs => gs.Key);
         }
 #pragma warning restore 618
     }

@@ -1,4 +1,4 @@
-﻿namespace OSSFinder.Core.Auditing
+﻿namespace OSSFinder.Auditing
 {
     /// <summary>
     /// Represents the actual data stored in an audit entry, an AuditRecord/AuditEnvironment pair

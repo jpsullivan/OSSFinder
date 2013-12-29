@@ -1,4 +1,4 @@
-﻿namespace OSSFinder.Core.Entities
+﻿namespace OSSFinder.Entities
 {
     public class SiteSetting : IEntity
     {

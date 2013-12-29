@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using OSSFinder.Configuration;
 using OSSFinder.Controllers;
-using OSSFinder.Core.Entities;
+using OSSFinder.Entities;
 
 namespace OSSFinder.Views
 {

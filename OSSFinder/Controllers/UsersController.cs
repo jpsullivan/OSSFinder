@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Linq;
-using System.Net;
 using System.Net.Mail;
-using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using OSSFinder.Authentication;
 using OSSFinder.Configuration;
-using OSSFinder.Core;
-using OSSFinder.Core.Entities;
-using OSSFinder.Infrastructure;
+using OSSFinder.Entities;
 using OSSFinder.Infrastructure.Extensions;
 using OSSFinder.Models.ViewModels;
-using OSSFinder.Services;
 using OSSFinder.Services.Interfaces;
+using CredentialTypes = OSSFinder.Authentication.CredentialTypes;
 
 namespace OSSFinder.Controllers
 {

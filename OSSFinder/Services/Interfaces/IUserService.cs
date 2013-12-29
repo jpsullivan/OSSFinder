@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using OSSFinder.Core.Entities;
+using OSSFinder.Entities;
 
 namespace OSSFinder.Services.Interfaces
 {

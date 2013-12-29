@@ -247,4 +247,7 @@ The {2} Team</value>
   <data name="UserNotFound" xml:space="preserve">
     <value>A user with the provided user name does not exist.</value>
   </data>
+  <data name="CloudAuditingService_DuplicateAuditRecord" xml:space="preserve">
+    <value>Unable to write audit record: '{0}'. Record already exists.</value>
+  </data>
 </root>

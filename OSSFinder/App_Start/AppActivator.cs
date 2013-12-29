@@ -16,7 +16,6 @@ using Ninject;
 using Ninject.Web.Common;
 using OSSFinder.App_Start;
 using OSSFinder.Configuration;
-using OSSFinder.Core.Entities;
 using OSSFinder.Infrastructure;
 using OSSFinder.Infrastructure.Attributes;
 using OSSFinder.Infrastructure.Filters;

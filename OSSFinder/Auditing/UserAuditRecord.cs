@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using OSSFinder.Core.Entities;
+using OSSFinder.Entities;
+using CredentialTypes = OSSFinder.Authentication.CredentialTypes;
 
-namespace OSSFinder.Core.Auditing
+namespace OSSFinder.Auditing
 {
     public class UserAuditRecord : AuditRecord<UserAuditAction>
     {

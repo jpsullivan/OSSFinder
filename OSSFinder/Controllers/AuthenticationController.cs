@@ -6,7 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using OSSFinder.Authentication;
-using OSSFinder.Core.Entities;
+using OSSFinder.Entities;
 using OSSFinder.Infrastructure;
 using OSSFinder.Infrastructure.Attributes;
 using OSSFinder.Infrastructure.Extensions;

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace OSSFinder.Core.Entities
+namespace OSSFinder.Entities
 {
     public class EntityRepository<T> : IEntityRepository<T>
         where T : class, IEntity, new()

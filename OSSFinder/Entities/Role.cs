@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace OSSFinder.Core.Entities
+namespace OSSFinder.Entities
 {
     public class Role
     {

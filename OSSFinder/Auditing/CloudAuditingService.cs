@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.Blob.Protocol;
 
-namespace OSSFinder.Core.Auditing
+namespace OSSFinder.Auditing
 {
     /// <summary>
     /// Writes audit records to a specific container in the Cloud Storage Account provided

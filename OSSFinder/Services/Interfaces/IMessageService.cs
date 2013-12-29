@@ -1,5 +1,5 @@
 ﻿using System.Net.Mail;
-using OSSFinder.Core.Entities;
+using OSSFinder.Entities;
 
 namespace OSSFinder.Services.Interfaces
 {

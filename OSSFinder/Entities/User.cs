@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using CredentialTypes = OSSFinder.Authentication.CredentialTypes;
 
-namespace OSSFinder.Core.Entities
+namespace OSSFinder.Entities
 {
     public class User : IEntity
     {
