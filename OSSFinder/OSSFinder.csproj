@@ -21,6 +21,8 @@
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <IISExpressSSLPort />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,8 +45,27 @@
     <Reference Include="AnglicanGeek.MarkdownMailer">
       <HintPath>..\packages\AnglicanGeek.MarkdownMailer.1.2\lib\net40\AnglicanGeek.MarkdownMailer.dll</HintPath>
     </Reference>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="BundleTransformer.Core">
+      <HintPath>..\packages\BundleTransformer.Core.1.8.17\lib\net40\BundleTransformer.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="BundleTransformer.UglifyJs">
+      <HintPath>..\packages\BundleTransformer.UglifyJs.1.8.14\lib\net40\BundleTransformer.UglifyJs.dll</HintPath>
+    </Reference>
+    <Reference Include="BundleTransformer.Yui">
+      <HintPath>..\packages\BundleTransformer.Yui.1.8.12\lib\net40\BundleTransformer.Yui.dll</HintPath>
+    </Reference>
+    <Reference Include="ClearScript">
+      <HintPath>..\packages\JavaScriptEngineSwitcher.V8.0.9.5\lib\net40\ClearScript.dll</HintPath>
+    </Reference>
     <Reference Include="DynamicData.EFCodeFirstProvider">
       <HintPath>..\packages\DynamicData.EFCodeFirstProvider.0.3.0.0\lib\net40\DynamicData.EFCodeFirstProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="EcmaScript.NET">
+      <HintPath>..\packages\EcmaScript.Net.1.0.1.0\lib\net20\EcmaScript.NET.dll</HintPath>
     </Reference>
     <Reference Include="Elmah">
       <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
@@ -67,6 +88,12 @@
     </Reference>
     <Reference Include="Glimpse.Mvc4">
       <HintPath>..\packages\Glimpse.Mvc4.1.5.1\lib\net40\Glimpse.Mvc4.dll</HintPath>
+    </Reference>
+    <Reference Include="JavaScriptEngineSwitcher.Core">
+      <HintPath>..\packages\JavaScriptEngineSwitcher.Core.0.9.5\lib\net40\JavaScriptEngineSwitcher.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="JavaScriptEngineSwitcher.V8">
+      <HintPath>..\packages\JavaScriptEngineSwitcher.V8.0.9.5\lib\net40\JavaScriptEngineSwitcher.V8.dll</HintPath>
     </Reference>
     <Reference Include="MarkdownSharp">
       <HintPath>..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
@@ -180,6 +207,10 @@
     <Reference Include="System.Web.Http.OData">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.4.0.30506\lib\net40\System.Web.Http.OData.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.2\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -218,9 +249,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Optimization">
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Providers">
       <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
     </Reference>
@@ -253,13 +281,12 @@
     <Reference Include="WebBackgrounder.EntityFramework">
       <HintPath>..\packages\WebBackgrounder.EntityFramework.0.1\lib\net40\WebBackgrounder.EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="WebGrease">
-      <Private>True</Private>
-      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
     </Reference>
-    <Reference Include="Antlr3.Runtime">
-      <Private>True</Private>
-      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    <Reference Include="Yahoo.Yui.Compressor">
+      <HintPath>..\packages\YUICompressor.NET.2.3.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -312,6 +339,7 @@
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Diagnostics\AuthenticationGlimpseTab.cs" />
     <Compile Include="Diagnostics\ConcurrentInMemoryPersistenceStore.cs" />
@@ -453,60 +481,101 @@
   <ItemGroup>
     <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Content\themes\base\jquery-ui.css" />
-    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
-    <Content Include="Content\themes\base\jquery.ui.all.css" />
-    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
-    <Content Include="Content\themes\base\jquery.ui.base.css" />
-    <Content Include="Content\themes\base\jquery.ui.button.css" />
-    <Content Include="Content\themes\base\jquery.ui.core.css" />
-    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
-    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
-    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
-    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
-    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
-    <Content Include="Content\themes\base\jquery.ui.slider.css" />
-    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
-    <Content Include="Content\themes\base\jquery.ui.theme.css" />
-    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
-    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
-    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
-    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
-    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
-    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <None Include="ClearScript.V8\ClearScriptV8-32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ClearScript.V8\ClearScriptV8-64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ClearScript.V8\v8-ia32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ClearScript.V8\v8-x64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Content\css\lib\aui\arrow.png" />
+    <Content Include="Content\css\lib\aui\atlassian-icons.svg" />
+    <Content Include="Content\css\lib\aui\aui-all.css" />
+    <Content Include="Content\css\lib\aui\aui-experimental.css" />
+    <Content Include="Content\css\lib\aui\aui-icon-close.png" />
+    <Content Include="Content\css\lib\aui\aui-icon-tools.gif" />
+    <Content Include="Content\css\lib\aui\aui-ie.css" />
+    <Content Include="Content\css\lib\aui\aui-ie9.css" />
+    <Content Include="Content\css\lib\aui\aui-message-icon-sprite.png" />
+    <Content Include="Content\css\lib\aui\aui-toolbar-24px.png" />
+    <Content Include="Content\css\lib\aui\aui-toolbar-button-active-bg.png" />
+    <Content Include="Content\css\lib\aui\aui-toolbar-button-inactive-bg.png" />
+    <Content Include="Content\css\lib\aui\aui.css" />
+    <Content Include="Content\css\lib\aui\bg-000-trans20.png" />
+    <Content Include="Content\css\lib\aui\bg-000-trans50.png" />
+    <Content Include="Content\css\lib\aui\bg-grippy.png" />
+    <Content Include="Content\css\lib\aui\core\icon-dropdown-active-d.png" />
+    <Content Include="Content\css\lib\aui\core\icon-dropdown-active.png" />
+    <Content Include="Content\css\lib\aui\core\icon-dropdown-d.png" />
+    <Content Include="Content\css\lib\aui\core\icon-dropdown.png" />
+    <Content Include="Content\css\lib\aui\core\icon-maximize-d.png" />
+    <Content Include="Content\css\lib\aui\core\icon-maximize.png" />
+    <Content Include="Content\css\lib\aui\core\icon-minimize-d.png" />
+    <Content Include="Content\css\lib\aui\core\icon-minimize.png" />
+    <Content Include="Content\css\lib\aui\core\icon-move-d.png" />
+    <Content Include="Content\css\lib\aui\core\icon-move.png" />
+    <Content Include="Content\css\lib\aui\core\icon-search.png" />
+    <Content Include="Content\css\lib\aui\fav_off_16.png" />
+    <Content Include="Content\css\lib\aui\fav_on_16.png" />
+    <Content Include="Content\css\lib\aui\forms\icon-date.png" />
+    <Content Include="Content\css\lib\aui\forms\icon-help.png" />
+    <Content Include="Content\css\lib\aui\forms\icon-range.png" />
+    <Content Include="Content\css\lib\aui\forms\icon-required.png" />
+    <Content Include="Content\css\lib\aui\forms\icon-users.png" />
+    <Content Include="Content\css\lib\aui\forms\icons_form.gif" />
+    <Content Include="Content\css\lib\aui\icons\aui-icon-close.png" />
+    <Content Include="Content\css\lib\aui\icons\aui-icon-tools.gif" />
+    <Content Include="Content\css\lib\aui\icons\aui-message-icon-sprite.png" />
+    <Content Include="Content\css\lib\aui\icons\core\icon-dropdown-active-d.png" />
+    <Content Include="Content\css\lib\aui\icons\core\icon-dropdown-active.png" />
+    <Content Include="Content\css\lib\aui\icons\core\icon-dropdown-d.png" />
+    <Content Include="Content\css\lib\aui\icons\core\icon-dropdown.png" />
+    <Content Include="Content\css\lib\aui\icons\core\icon-maximize-d.png" />
+    <Content Include="Content\css\lib\aui\icons\core\icon-maximize.png" />
+    <Content Include="Content\css\lib\aui\icons\core\icon-minimize-d.png" />
+    <Content Include="Content\css\lib\aui\icons\core\icon-minimize.png" />
+    <Content Include="Content\css\lib\aui\icons\core\icon-move-d.png" />
+    <Content Include="Content\css\lib\aui\icons\core\icon-move.png" />
+    <Content Include="Content\css\lib\aui\icons\core\icon-search.png" />
+    <Content Include="Content\css\lib\aui\icons\forms\icon-date.png" />
+    <Content Include="Content\css\lib\aui\icons\forms\icon-help.png" />
+    <Content Include="Content\css\lib\aui\icons\forms\icon-range.png" />
+    <Content Include="Content\css\lib\aui\icons\forms\icon-required.png" />
+    <Content Include="Content\css\lib\aui\icons\forms\icon-users.png" />
+    <Content Include="Content\css\lib\aui\icons\messages\icon-close-inverted.png" />
+    <Content Include="Content\css\lib\aui\icons\messages\icon-close.png" />
+    <Content Include="Content\css\lib\aui\icons\messages\icon-error-white.png" />
+    <Content Include="Content\css\lib\aui\icons\messages\icon-error.png" />
+    <Content Include="Content\css\lib\aui\icons\messages\icon-generic.png" />
+    <Content Include="Content\css\lib\aui\icons\messages\icon-hint.png" />
+    <Content Include="Content\css\lib\aui\icons\messages\icon-info.png" />
+    <Content Include="Content\css\lib\aui\icons\messages\icon-success.png" />
+    <Content Include="Content\css\lib\aui\icons\messages\icon-warning.png" />
+    <Content Include="Content\css\lib\aui\icons_form.gif" />
+    <Content Include="Content\css\lib\aui\messages\icon-close-inverted.png" />
+    <Content Include="Content\css\lib\aui\messages\icon-close.png" />
+    <Content Include="Content\css\lib\aui\messages\icon-error-white.png" />
+    <Content Include="Content\css\lib\aui\messages\icon-error.png" />
+    <Content Include="Content\css\lib\aui\messages\icon-generic.png" />
+    <Content Include="Content\css\lib\aui\messages\icon-hint.png" />
+    <Content Include="Content\css\lib\aui\messages\icon-info.png" />
+    <Content Include="Content\css\lib\aui\messages\icon-success.png" />
+    <Content Include="Content\css\lib\aui\messages\icon-warning.png" />
+    <Content Include="Content\css\lib\aui\toolbar\aui-toolbar-24px.png" />
+    <Content Include="Content\css\lib\aui\toolbar\aui-toolbar-button-active-bg.png" />
+    <Content Include="Content\css\lib\aui\toolbar\aui-toolbar-button-inactive-bg.png" />
+    <Content Include="Content\css\lib\aui\wait.gif" />
+    <Content Include="Content\js\lib\aui\aui-all.js" />
+    <Content Include="Content\js\lib\aui\aui-dependencies.js" />
+    <Content Include="Content\js\lib\aui\aui-experimental.js" />
+    <Content Include="Content\js\lib\aui\aui-ie.js" />
+    <Content Include="Content\js\lib\aui\aui-soy.js" />
+    <Content Include="Content\js\lib\aui\aui.js" />
     <Content Include="favicon.ico" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
@@ -519,6 +588,13 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Content\css\lib\aui\atlassian-icons.eot" />
+    <Content Include="Content\css\lib\aui\atlassian-icons.ttf" />
+    <Content Include="Content\css\lib\aui\atlassian-icons.woff" />
+    <None Include="BundleTransformer.Configuration.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <EmbeddedResource Include="Infrastructure\Elmah.SqlServer.sql" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -535,7 +611,9 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -543,7 +621,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
-    <Content Include="Content\Site.css" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
@@ -585,7 +662,9 @@
     <Content Include="Views\Errors\NotFound.cshtml" />
     <Content Include="Views\Errors\ReadOnlyMode.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\fonts\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

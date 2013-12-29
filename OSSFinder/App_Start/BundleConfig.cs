@@ -1,43 +1,43 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
+using BundleTransformer.Core.Orderers;
+using BundleTransformer.Core.Transformers;
+using BundleTransformer.UglifyJs.Minifiers;
+using BundleTransformer.Yui.Minifiers;
 
-namespace OSSFinder
+namespace OSSFinder.App_Start
 {
     public class BundleConfig
     {
-        // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+            var cssTransformer = new CssTransformer(new YuiCssMinifier());
+            var jsTransformer = new JsTransformer(new UglifyJsMinifier());
+            var nullOrderer = new NullOrderer();
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                        "~/Scripts/jquery-ui-{version}.js"));
+            // Lib CSS
+            Bundle libCss = new Bundle("~/bundles/css_lib").IncludeDirectory("~/Content/css/lib/aui", "*.css");
+            //libCss.Transforms.Add(cssTransformer);
+            bundles.Add(libCss);
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.unobtrusive*",
-                        "~/Scripts/jquery.validate*"));
+//            // App CSS
+//            Bundle appCss = new Bundle("~/bundles/css_app").Include("~/Content/less/app/bootstrap.less", new CssRewriteUrlTransform());
+//            appCss.Transforms.Add(cssTransformer);
+//            bundles.Add(appCss);
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+            // Lib JS
+            Bundle libJs = new Bundle("~/bundles/js_lib").Include(
+                "~/Scripts/jquery-{version}.js",
+                "~/Content/js/lib/aui/aui-all.js");
+            libJs.Transforms.Add(jsTransformer);
+            libJs.Orderer = nullOrderer;
+            bundles.Add(libJs);
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
-            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
-                        "~/Content/themes/base/jquery.ui.core.css",
-                        "~/Content/themes/base/jquery.ui.resizable.css",
-                        "~/Content/themes/base/jquery.ui.selectable.css",
-                        "~/Content/themes/base/jquery.ui.accordion.css",
-                        "~/Content/themes/base/jquery.ui.autocomplete.css",
-                        "~/Content/themes/base/jquery.ui.button.css",
-                        "~/Content/themes/base/jquery.ui.dialog.css",
-                        "~/Content/themes/base/jquery.ui.slider.css",
-                        "~/Content/themes/base/jquery.ui.tabs.css",
-                        "~/Content/themes/base/jquery.ui.datepicker.css",
-                        "~/Content/themes/base/jquery.ui.progressbar.css",
-                        "~/Content/themes/base/jquery.ui.theme.css"));
+#if (DEBUG && !DEBUGMINIFIED)
+            BundleTable.EnableOptimizations = false;
+#else
+            BundleTable.EnableOptimizations = true;
+#endif
         }
     }
 }

@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Security.Claims;
-using System.Security.Principal;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.Owin;
 using Ninject;
 using OSSFinder.App_Start;
-using OSSFinder.Authentication;
-using System.Net;
 using OSSFinder.Configuration;
 using OSSFinder.Entities;
 using OSSFinder.Infrastructure;
