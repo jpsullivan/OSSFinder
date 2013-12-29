@@ -16,12 +16,13 @@ using Ninject;
 using Ninject.Web.Common;
 using OSSFinder.App_Start;
 using OSSFinder.Configuration;
+using OSSFinder.Entities;
 using OSSFinder.Infrastructure;
 using OSSFinder.Infrastructure.Attributes;
 using OSSFinder.Infrastructure.Filters;
 using WebActivator;
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(AppActivator), "PreStart")]
+[assembly: PreApplicationStartMethod(typeof(AppActivator), "PreStart")]
 [assembly: PostApplicationStartMethod(typeof(AppActivator), "PostStart")]
 [assembly: ApplicationShutdownMethod(typeof(AppActivator), "Stop")]
 
@@ -59,7 +60,10 @@ namespace OSSFinder.App_Start
         {
             // Get configuration from the kernel
             var config = Container.Kernel.Get<IAppConfiguration>();
+            DbMigratorPostStart();
             AppPostStart();
+
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
         public static void Stop()
@@ -112,38 +116,35 @@ namespace OSSFinder.App_Start
 
         private static void AppPostStart()
         {
-            GlobalFilters.Filters.Add(new ElmahHandleErrorAttribute());
-            GlobalFilters.Filters.Add(new ReadOnlyModeErrorFilter());
-            GlobalFilters.Filters.Add(new AntiForgeryErrorFilter());
-
             // disable the X-AspNetMvc-Version: header
             MvcHandler.DisableMvcResponseHeader = true;
 
             AreaRegistration.RegisterAllAreas();
-
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            // set up MVC routes so our app URLs actually work
-            // IMPORTANT: this must be called last; nothing else appears to execute after this
             RegisterRoutes(RouteTable.Routes);
+
+            GlobalFilters.Filters.Add(new ElmahHandleErrorAttribute());
+            GlobalFilters.Filters.Add(new ReadOnlyModeErrorFilter());
+            GlobalFilters.Filters.Add(new AntiForgeryErrorFilter());
         }
 
         /// <summary>
         /// Register our ASP.NET MVC routes
         /// </summary>
-        public static void RegisterRoutes(RouteCollection routes) {
-            routes.IgnoreRoute("errors");
-            routes.IgnoreRoute("errors/{*pathInfo}");
-            //routes.IgnoreRoute("{*allaspx}", new {allaspx = @".*\.aspx(/.*)?"});
-            routes.IgnoreRoute("{*allaxd}", new {allaxd = @".*\.axd(/.*)?"});
-            routes.IgnoreRoute("favicon.ico");
-            routes.IgnoreRoute("favicon.png");
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.IgnoreRoute("{*allaspx}", new { allaspx = @".*\.aspx(/.*)?" });
 
+            // any controller methods that are decorated with our attribute will be registered
             RouteAttribute.MapDecoratedRoutes(routes);
 
             // MUST be the last route as a catch-all!
-            routes.MapRoute("{*url}", new { controller = "Error", action = "PageNotFound" }.ToString());
+            routes.MapRoute("", "{*url}", new { controller = "Error", action = "PageNotFound" });
+        }
+
+        private static void DbMigratorPostStart()
+        {
+            // Don't run migrations, ever!
+            Database.SetInitializer<EntitiesContext>(null);
         }
 
         private static void NinjectPreStart()
