@@ -37,6 +37,20 @@ namespace OSSFinder.Infrastructure.Extensions
             return self.Raw(HttpUtility.HtmlEncode(text).Replace("\n", "<br />").Replace("  ", "&nbsp; "));
         }
 
+        public static bool ContainsValidationErrors(this HtmlHelper html, string key) 
+        {
+            var toRemove = html.ViewData.ModelState.Keys
+                .Where(k => !String.Equals(k, key, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            var copy = new ModelStateDictionary(html.ViewData.ModelState);
+            foreach (var k in toRemove)
+            {
+                html.ViewData.ModelState.Remove(k);
+            }
+            return html.ValidationSummary().ToString().Length > 1;
+        }
+
         public static IHtmlString ValidationSummaryFor(this HtmlHelper html, string key)
         {
             var toRemove = html.ViewData.ModelState.Keys

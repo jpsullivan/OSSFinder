@@ -30,17 +30,13 @@
         @Html.ValidationMessageFor(m => m.SignIn.Password)
     </div>
 
-@*        <p id="signIn-lostpassword">*@
-@*            @Html.ActionLink("Lost your Password?", "ForgotPassword", "Users")*@
-@*        </p>*@
-        
     <div class="buttons-container">
         <div class="buttons">
             <input class="aui-button aui-button-primary" type="submit" id="submit" name="submit" value="Log in">
             @Html.ActionLink("Forgot your password?", "ForgotPassword", "Users", new { @class = "aui-button aui-button-link" })
         </div>
         <div class="sign-up">
-            @Html.ActionLink("Need an account? Sign up free.", "Register", "Users")
+            @Html.ActionLink("Need an account? Sign up free.", "Register", "Authentication")
         </div>
     </div>
 }

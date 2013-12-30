@@ -38,6 +38,11 @@ namespace OSSFinder.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Register() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Register);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult LogOff() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.LogOff);
         }
@@ -60,6 +65,7 @@ namespace OSSFinder.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string LogOn = "LogOn";
+            public readonly string Register = "Register";
             public readonly string LogOff = "LogOff";
             public readonly string Authenticate = "Authenticate";
         }
@@ -70,9 +76,9 @@ namespace OSSFinder.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string _Register = "~/Views/Authentication/_Register.cshtml";
             public readonly string _SignIn = "~/Views/Authentication/_SignIn.cshtml";
             public readonly string LogOn = "~/Views/Authentication/LogOn.cshtml";
+            public readonly string Register = "~/Views/Authentication/Register.cshtml";
         }
     }
 
@@ -82,6 +88,12 @@ namespace OSSFinder.Controllers {
 
         public override System.Web.Mvc.ActionResult LogOn(string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LogOn);
+            callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Register(string returnUrl) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Register);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }

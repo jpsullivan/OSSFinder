@@ -1,0 +1,57 @@
+﻿@using OSSFinder
+@using OSSFinder.Infrastructure.Extensions
+@using OSSFinder.Models.ViewModels
+@model LogOnViewModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "../Shared/_LogOnLayout.cshtml";
+}
+
+<h2>Sign Up</h2>
+
+@using (Html.BeginForm("Register", "Authentication", FormMethod.Post, new {@class = "aui"})) 
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("ReturnUrl", ViewData[Constants.ReturnUrlViewDataKey])
+    @Html.Hidden("LinkingAccount", Model.External != null)
+    
+    if (Model.External != null)
+    {
+        @Html.HiddenFor(m => m.External.ProviderAccountNoun)
+        @Html.HiddenFor(m => m.External.AccountName)
+    }
+    
+    @Html.ValidationSummaryFor("Register")
+
+    <div class="field-group">
+        @Html.LabelFor(m => m.Register.Username)
+        @Html.TextBoxFor(m => m.Register.Username, new { @class = "text" })
+        @Html.ValidationMessageFor(m => m.Register.Username)
+    </div>
+
+    if (Model.External == null)
+    {
+        <div class="field-group">
+            @Html.LabelFor(m => m.Register.Password)
+            @Html.EditorFor(m => m.Register.Password)
+            @Html.ValidationMessageFor(m => m.Register.Password)
+        </div>
+    }
+
+    <div class="field-group">
+        @Html.LabelFor(m => m.Register.EmailAddress)
+        @Html.TextBoxFor(m => m.Register.EmailAddress, new { @class = "text" })
+        @Html.ValidationMessageFor(m => m.Register.EmailAddress)
+    </div>
+    
+    <div class="buttons-container">
+        <div class="buttons">
+            <input class="aui-button aui-button-primary" type="submit" id="submit" name="submit" value="Sign up">
+            <a href="@Url.Home()" class="aui-button aui-button-link">Cancel</a>
+        </div>
+        <div class="sign-up">
+            @Html.ActionLink("Need an account? Sign up free.", "Register", "Authentication")
+        </div>
+    </div>
+}

@@ -101,6 +101,22 @@ namespace OSSFinder.Controllers
         }
 
         [RequireSsl]
+        [Route("account/register")]
+        public virtual ActionResult Register(string returnUrl) 
+        {
+            // I think it should be obvious why we don't want the current URL to be the return URL here ;)
+            ViewData[Constants.ReturnUrlViewDataKey] = returnUrl;
+
+            if (Request.IsAuthenticated)
+            {
+                TempData["Message"] = Strings.AlreadyLoggedIn;
+                return SafeRedirect(returnUrl);
+            }
+
+            return RegisterView();
+        }
+
+        [RequireSsl]
         [ValidateAntiForgeryToken]
         [Route("account/register"), AcceptVerbs(HttpVerbs.Post)]
         public async virtual Task<ActionResult> Register(LogOnViewModel model, string returnUrl, bool linkingAccount)
@@ -284,21 +300,20 @@ namespace OSSFinder.Controllers
                     }).ToList();
         }
 
-        private ActionResult LogOnView()
-        {
-            return LogOnView(new LogOnViewModel()
-            {
-                SignIn = new SignInViewModel(),
-                Register = new RegisterViewModel()
-            });
-        }
-
         private ActionResult ExternalLinkExpired()
         {
             // User got here without an external login cookie (or an expired one)
             // Send them to the logon action with a message
             TempData["Message"] = Strings.ExternalAccountLinkExpired;
             return RedirectToAction("LogOn");
+        }
+
+        private ActionResult LogOnView()
+        {
+            return LogOnView(new LogOnViewModel {
+                SignIn = new SignInViewModel(),
+                Register = new RegisterViewModel()
+            });
         }
 
         private ActionResult LogOnView(LogOnViewModel existingModel)
@@ -311,6 +326,24 @@ namespace OSSFinder.Controllers
             existingModel.Register = existingModel.Register ?? new RegisterViewModel();
 
             return View("LogOn", existingModel);
+        }
+
+        private ActionResult RegisterView() 
+        {
+            return RegisterView(new LogOnViewModel {
+                Register = new RegisterViewModel()
+            });
+        }
+
+        private ActionResult RegisterView(LogOnViewModel existingModel) 
+        {
+            // Fill the providers list
+            existingModel.Providers = GetProviders();
+
+            // Reinitialize any nulled-out sub models
+            existingModel.Register = existingModel.Register ?? new RegisterViewModel();
+
+            return View("Register", existingModel);
         }
     }
 }

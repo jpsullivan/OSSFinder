@@ -657,7 +657,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Authentication\_Register.cshtml" />
+    <Content Include="Views\Authentication\Register.cshtml" />
     <Content Include="Views\Authentication\_SignIn.cshtml" />
     <Content Include="Views\Authentication\LogOn.cshtml" />
     <Content Include="Views\Users\Account.cshtml" />

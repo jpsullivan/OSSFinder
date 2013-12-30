@@ -21,9 +21,9 @@ namespace OSSFinder
             return builder.Uri.AbsoluteUri;
         }
 
-        public static string Home(this UrlHelper url)
+        public static string Home(this UrlHelper url) 
         {
-            return url.RouteUrl(RouteName.Home);
+            return url.Action("Index", "Home");
         }
 
         public static string ConfirmationUrl(this UrlHelper url, string action, string controller, string username, string token)
