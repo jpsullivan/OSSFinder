@@ -92,6 +92,9 @@
     <Reference Include="Glimpse.Mvc4">
       <HintPath>..\packages\Glimpse.Mvc4.1.5.1\lib\net40\Glimpse.Mvc4.dll</HintPath>
     </Reference>
+    <Reference Include="GravatarHelper">
+      <HintPath>..\packages\GravatarHelper.3.2.2\lib\Net40\GravatarHelper.dll</HintPath>
+    </Reference>
     <Reference Include="JavaScriptEngineSwitcher.Core">
       <HintPath>..\packages\JavaScriptEngineSwitcher.Core.0.9.5\lib\net40\JavaScriptEngineSwitcher.Core.dll</HintPath>
     </Reference>
@@ -679,6 +682,8 @@
     <Content Include="Views\Errors\NotFound.cshtml" />
     <Content Include="Views\Errors\ReadOnlyMode.cshtml" />
     <Content Include="Views\Shared\_LogOnLayout.cshtml" />
+    <Content Include="Views\Shared\_AuthenticatedHeader.cshtml" />
+    <Content Include="Views\Shared\_UnauthenticatedHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />

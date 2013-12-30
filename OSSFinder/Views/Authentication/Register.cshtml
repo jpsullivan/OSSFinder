@@ -10,7 +10,7 @@
 
 <h2>Sign Up</h2>
 
-@using (Html.BeginForm("Register", "Authentication", FormMethod.Post, new {@class = "aui"})) 
+@using (Html.BeginForm("RegisterUser", "Authentication", FormMethod.Post, new {@class = "aui"})) 
 {
     @Html.AntiForgeryToken()
     @Html.Hidden("ReturnUrl", ViewData[Constants.ReturnUrlViewDataKey])
@@ -49,9 +49,6 @@
         <div class="buttons">
             <input class="aui-button aui-button-primary" type="submit" id="submit" name="submit" value="Sign up">
             <a href="@Url.Home()" class="aui-button aui-button-link">Cancel</a>
-        </div>
-        <div class="sign-up">
-            @Html.ActionLink("Need an account? Sign up free.", "Register", "Authentication")
         </div>
     </div>
 }

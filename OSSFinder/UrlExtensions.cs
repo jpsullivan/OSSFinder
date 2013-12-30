@@ -76,9 +76,10 @@ namespace OSSFinder
             return url.Action(originalResult);
         }
 
-        public static string Register(this UrlHelper url)
+        public static string Register(this UrlHelper url, string returnUrl)
         {
-            return url.Action(MVC.Authentication.LogOn());
+            //return url.Action(MVC.Authentication.Register());
+            return url.Action("Register", "Authentication", new {returnUrl = returnUrl});
         }
 
         public static string User(this UrlHelper url, User user, string scheme = null)

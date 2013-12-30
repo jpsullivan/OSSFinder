@@ -1,0 +1,49 @@
+X-Sender: "NuGet Gallery" <nugetgallery@outercurve.org>
+X-Receiver: "jaysche" <jaysche.sullivan@gmail.com>
+MIME-Version: 1.0
+From: "NuGet Gallery" <nugetgallery@outercurve.org>
+To: "jaysche" <jaysche.sullivan@gmail.com>
+Date: 30 Dec 2013 12:21:51 -0500
+Subject: [NuGet Gallery] Please verify your account.
+Content-Type: multipart/alternative;
+ boundary=--boundary_0_6153b806-21e3-4035-bc59-d5e96240faef
+
+
+----boundary_0_6153b806-21e3-4035-bc59-d5e96240faef
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+Thank you for registering with the NuGet Gallery. =0D=0AWe can't =
+wait to see what packages you'll upload.=0D=0A=0D=0ASo we can be =
+sure to contact you, please verify your email address and click t=
+he following link:=0D=0A=0D=0A[http://localhost:1489/account/conf=
+irm/jaysche/PCmbZQXhen7xkE0Bu1rGsQ2](http://localhost:1489/accoun=
+t/confirm/jaysche/PCmbZQXhen7xkE0Bu1rGsQ2)=0D=0A=0D=0AThanks,=0D=0A=
+The NuGet Gallery Team
+----boundary_0_6153b806-21e3-4035-bc59-d5e96240faef
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: base64
+
+VGhhbmsgeW91IGZvciByZWdpc3RlcmluZyB3aXRoIHRoZSBOdUdldCBHYWxsZXJ5LiAN
+CldlIGNhbid0IHdhaXQgdG8gc2VlIHdoYXQgcGFja2FnZXMgeW91J2xsIHVwbG9hZC4N
+Cg0KU28gd2UgY2FuIGJlIHN1cmUgdG8gY29udGFjdCB5b3UsIHBsZWFzZSB2ZXJpZnkg
+eW91ciBlbWFpbCBhZGRyZXNzIGFuZCBjbGljayB0aGUgZm9sbG93aW5nIGxpbms6DQoN
+CltodHRwOi8vbG9jYWxob3N0OjE0ODkvYWNjb3VudC9jb25maXJtL2pheXNjaGUvUENt
+YlpRWGhlbjd4a0UwQnUxckdzUTJdKGh0dHA6Ly9sb2NhbGhvc3Q6MTQ4OS9hY2NvdW50
+L2NvbmZpcm0vamF5c2NoZS9QQ21iWlFYaGVuN3hrRTBCdTFyR3NRMikNCg0KVGhhbmtz
+LA0KVGhlIE51R2V0IEdhbGxlcnkgVGVhbQ==
+----boundary_0_6153b806-21e3-4035-bc59-d5e96240faef
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: base64
+
+PHA+VGhhbmsgeW91IGZvciByZWdpc3RlcmluZyB3aXRoIHRoZSBOdUdldCBHYWxsZXJ5
+LiAKV2UgY2FuJ3Qgd2FpdCB0byBzZWUgd2hhdCBwYWNrYWdlcyB5b3UnbGwgdXBsb2Fk
+LjwvcD4KCjxwPlNvIHdlIGNhbiBiZSBzdXJlIHRvIGNvbnRhY3QgeW91LCBwbGVhc2Ug
+dmVyaWZ5IHlvdXIgZW1haWwgYWRkcmVzcyBhbmQgY2xpY2sgdGhlIGZvbGxvd2luZyBs
+aW5rOjwvcD4KCjxwPjxhIGhyZWY9Imh0dHA6Ly9sb2NhbGhvc3Q6MTQ4OS9hY2NvdW50
+L2NvbmZpcm0vamF5c2NoZS9QQ21iWlFYaGVuN3hrRTBCdTFyR3NRMiI+aHR0cDovL2xv
+Y2FsaG9zdDoxNDg5L2FjY291bnQvY29uZmlybS9qYXlzY2hlL1BDbWJaUVhoZW43eGtF
+MEJ1MXJHc1EyPC9hPjwvcD4KCjxwPlRoYW5rcywKVGhlIE51R2V0IEdhbGxlcnkgVGVh
+bTwvcD4K
+----boundary_0_6153b806-21e3-4035-bc59-d5e96240faef--
+

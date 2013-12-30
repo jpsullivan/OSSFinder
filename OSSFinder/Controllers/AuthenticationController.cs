@@ -101,7 +101,7 @@ namespace OSSFinder.Controllers
         }
 
         [RequireSsl]
-        [Route("account/register")]
+        [Route("account/register"), AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult Register(string returnUrl) 
         {
             // I think it should be obvious why we don't want the current URL to be the return URL here ;)
@@ -118,8 +118,8 @@ namespace OSSFinder.Controllers
 
         [RequireSsl]
         [ValidateAntiForgeryToken]
-        [Route("account/register"), AcceptVerbs(HttpVerbs.Post)]
-        public async virtual Task<ActionResult> Register(LogOnViewModel model, string returnUrl, bool linkingAccount)
+        [Route("account/registeruser"), AcceptVerbs(HttpVerbs.Post)]
+        public async virtual Task<ActionResult> RegisterUser(LogOnViewModel model, string returnUrl, bool linkingAccount)
         {
             // I think it should be obvious why we don't want the current URL to be the return URL here ;)
             ViewData[Constants.ReturnUrlViewDataKey] = returnUrl;
@@ -185,6 +185,7 @@ namespace OSSFinder.Controllers
             return RedirectFromRegister(returnUrl);
         }
 
+        [Route("account/logoff")]
         public virtual ActionResult LogOff(string returnUrl)
         {
             OwinContext.Authentication.SignOut();
