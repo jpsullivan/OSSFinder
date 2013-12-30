@@ -52,6 +52,9 @@
     <Reference Include="BundleTransformer.Core">
       <HintPath>..\packages\BundleTransformer.Core.1.8.17\lib\net40\BundleTransformer.Core.dll</HintPath>
     </Reference>
+    <Reference Include="BundleTransformer.Less">
+      <HintPath>..\packages\BundleTransformer.Less.1.8.14\lib\net40\BundleTransformer.Less.dll</HintPath>
+    </Reference>
     <Reference Include="BundleTransformer.UglifyJs">
       <HintPath>..\packages\BundleTransformer.UglifyJs.1.8.14\lib\net40\BundleTransformer.UglifyJs.dll</HintPath>
     </Reference>
@@ -493,6 +496,18 @@
     <None Include="ClearScript.V8\v8-x64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="Content\css\app\bootstrap.css">
+      <DependentUpon>bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\app\bootstrap.min.css">
+      <DependentUpon>bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\app\login.css">
+      <DependentUpon>login.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\app\login.min.css">
+      <DependentUpon>login.less</DependentUpon>
+    </Content>
     <Content Include="Content\css\lib\aui\arrow.png" />
     <Content Include="Content\css\lib\aui\atlassian-icons.svg" />
     <Content Include="Content\css\lib\aui\aui-all.css" />
@@ -594,6 +609,8 @@
     <None Include="BundleTransformer.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Content\css\app\bootstrap.less" />
+    <Content Include="Content\css\app\login.less" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <EmbeddedResource Include="Infrastructure\Elmah.SqlServer.sql" />
@@ -661,6 +678,7 @@
     <Content Include="Views\Errors\InternalError.cshtml" />
     <Content Include="Views\Errors\NotFound.cshtml" />
     <Content Include="Views\Errors\ReadOnlyMode.cshtml" />
+    <Content Include="Views\Shared\_LogOnLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using OSSFinder.Authentication;
 using OSSFinder.Configuration;
 using OSSFinder.Entities;
+using OSSFinder.Infrastructure.Attributes;
 using OSSFinder.Infrastructure.Extensions;
 using OSSFinder.Models.ViewModels;
 using OSSFinder.Services.Interfaces;
@@ -46,8 +47,7 @@ namespace OSSFinder.Controllers
         }
 
         [Authorize]
-        [HttpPost]
-        [ActionName("ConfirmationRequired")]
+        [ActionName("ConfirmationRequired"), AcceptVerbs(HttpVerbs.Post)]
         public virtual ActionResult ConfirmationRequiredPost()
         {
             User user = GetCurrentUser();
@@ -72,8 +72,8 @@ namespace OSSFinder.Controllers
         }
 
         [Authorize]
-        [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("account/subscribe"), AcceptVerbs(HttpVerbs.Post)]
         public virtual ActionResult ChangeEmailSubscription(bool subscribe)
         {
             var user = GetCurrentUser();
@@ -150,6 +150,7 @@ namespace OSSFinder.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("account/forgotpassword/{username}/{token}")]
         public virtual async Task<ActionResult> ResetPassword(string username, string token, PasswordResetViewModel model, bool forgot)
         {
             // We don't want Login to have us as a return URL
@@ -176,6 +177,7 @@ namespace OSSFinder.Controllers
         }
 
         [Authorize]
+        [Route("account/confirm/{username}/{token}")]
         public virtual async Task<ActionResult> Confirm(string username, string token)
         {
             // We don't want Login to have us as a return URL
@@ -346,6 +348,7 @@ namespace OSSFinder.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
+        [Route("account/RemoveCredential/password")]
         public virtual Task<ActionResult> RemovePassword()
         {
             var user = GetCurrentUser();
@@ -358,6 +361,7 @@ namespace OSSFinder.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
+        [Route("account/RemoveCredential/{credentialType}")]
         public virtual Task<ActionResult> RemoveCredential(string credentialType)
         {
             var user = GetCurrentUser();

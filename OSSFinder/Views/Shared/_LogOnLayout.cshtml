@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    
+
     <link rel="stylesheet" href="@Url.Content("~/Content/css/lib/aui/aui-all.css")" media="all">
     <!--[if lt IE 9]><link rel="stylesheet" href="@Url.Content("/Content/css/lib/aui/aui-ie.css")" media="all"><![endif]-->
     <!--[if IE 9]><link rel="stylesheet" href="@Url.Content("/Content/css/lib/aui/aui-ie9.css")" media="all"><![endif]-->
@@ -15,7 +15,7 @@
     
     @Styles.Render("~/bundles/css_app")
 </head>
-<body class="aui-layout aui-page-fixed aui-theme-default">
+<body class="aui-layout aui-theme-default aui-page-focused aui-page-focused-medium">
     <div id="page">
         <header id="header" role="banner">
             <nav class="aui-header aui-dropdown2-trigger-group" role="navigation">
@@ -28,7 +28,7 @@
                         </h1>
                         <ul class="aui-nav">
                             <li><a href="#dropdown2-jira3" aria-owns="dropdown2-jira3" aria-haspopup="true" class="aui-dropdown2-trigger" aria-controls="dropdown2-header7">Menu<span class="aui-icon-dropdown"></span></a>
-                                <div class="aui-dropdown2 aui-style-default aui-dropdown2-in-header" id="dropdown2-jira3" style="display: none; top: 40px; min-width: 160px; left: 1213px; " aria-hidden="true">
+                                <div class="aui-dropdown2 aui-style-default aui-dropdown2-in-header" id="dropdown2-jira3" style="display: none; top: 40px; min-width: 160px; left: 1213px;" aria-hidden="true">
                                     <div class="aui-dropdown2-section">
                                         <ul>
                                             <li><a href="http://example.com/">Item 1</a></li>
@@ -59,7 +59,7 @@
                                 </form>
                             </li>
                             <li><a href="#dropdown2-header7" aria-owns="dropdown2-header7" aria-haspopup="true" class="aui-dropdown2-trigger" aria-controls="dropdown2-header7"><span class="aui-icon aui-icon-small aui-iconfont-help">Help</span><span class="aui-icon-dropdown"></span></a>
-                                <div class="aui-dropdown2 aui-style-default aui-dropdown2-in-header" id="dropdown2-header7" style="display: none; top: 40px; min-width: 160px; left: 1213px; " aria-hidden="true">
+                                <div class="aui-dropdown2 aui-style-default aui-dropdown2-in-header" id="dropdown2-header7" style="display: none; top: 40px; min-width: 160px; left: 1213px;" aria-hidden="true">
                                     <div class="aui-dropdown2-section">
                                         <ul>
                                             <li><a href="http://example.com/" class="active">Online help</a></li>
@@ -70,31 +70,36 @@
                                 </div>
                             </li>
                             <li><a href="#dropdown2-header9" aria-owns="dropdown2-header9" aria-haspopup="true" class="aui-dropdown2-trigger" aria-controls="dropdown2-header9">
-                                    <div class="aui-avatar aui-avatar-small">
-                                        <div class="aui-avatar-inner">
-                                            <img src="src/img/avatar-16.png"></img>
-                                        </div>
+                                <div class="aui-avatar aui-avatar-small">
+                                    <div class="aui-avatar-inner">
+                                        <img src="src/img/avatar-16.png"></img>
                                     </div>
-                                </a>
+                                </div>
+                            </a>
                                 <div class="aui-dropdown2 aui-style-default aui-dropdown2-in-header" id="dropdown2-header9" style="display: none; top: 40px; min-width: 160px; left: 1213px;" aria-hidden="true">
-                                    @if (User.Identity.IsAuthenticated) {
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
                                         <div class="aui-dropdown2-section">
                                             <ul>
                                                 <li><a href="http://example.com/" class="active">Profile</a></li>
                                                 <li><a href="http://example.com/">Extensions</a></li>
                                             </ul>
                                         </div>
+
                                         <div class="aui-dropdown2-section">
                                             <ul>
                                                 <li><a href="http://example.com/">Use Agile by default</a></li>
                                             </ul>
                                         </div>
+
                                         <div class="aui-dropdown2-section">
                                             <ul>
                                                 <li><a href="http://example.com/">Log out</a></li>
                                             </ul>
                                         </div>
-                                    } else {
+                                    }
+                                    else
+                                    {
                                         string returnUrl = ViewData.ContainsKey(Constants.ReturnUrlViewDataKey) ? (string)ViewData[Constants.ReturnUrlViewDataKey] : Request.RawUrl;
                                         <div class="aui-dropdown2-section">
                                             <ul>
@@ -109,37 +114,16 @@
                 </div>
             </nav>
         </header>
-        <!-- #header -->
 
-        <section id="content" role="main">
-            <header class="aui-page-header">
-                <div class="aui-page-header">
-                    <div class="aui-page-header-inner">
-                        <h1>Fluid layout</h1>
-                    </div>
-                </div>
-            </header>
-
-            <nav class="aui-navgroup aui-navgroup-horizontal">
-                <div class="aui-navgroup-inner">
-                    <div class="aui-navgroup-primary">
-                        <ul class="aui-nav">
-                            <li class="aui-nav-selected"><a href="#">Nav item</a></li>
-                            <li><a href="#">Nav item</a></li>
-                            <li><a href="#">Nav item</a></li>
-                            <li><a href="#">Nav item</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
-            <div class="aui-page-panel">
+        <section class="login" id="content" role="main">
+            <div class="aui-page-panel margin-fix">
                 <div class="aui-page-panel-inner">
                     <section class="aui-page-panel-content">
                         @RenderBody()
                     </section>
                 </div>
             </div>
+
         </section>
 
         <footer id="footer" role="contentinfo">

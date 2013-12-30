@@ -355,6 +355,19 @@ namespace Links {
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class app {
+                private const string URLPATH = "~/Content/css/app";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string bootstrap_less = Url("bootstrap.less");
+                public static readonly string bootstrap_css = Url("bootstrap.css");
+                public static readonly string bootstrap_min_css = Url("bootstrap.min.css");
+                public static readonly string login_less = Url("login.less");
+                public static readonly string login_css = Url("login.css");
+                public static readonly string login_min_css = Url("login.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
             public static class lib {
                 private const string URLPATH = "~/Content/css/lib";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }

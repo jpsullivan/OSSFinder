@@ -46,12 +46,12 @@ namespace OSSFinder
 
         public static string LogOn(this UrlHelper url)
         {
-            return url.RouteUrl(RouteName.Authentication, new { action = "LogOn" });
+            return url.Action("LogOn", "Authentication");
         }
 
-        public static string LogOn(this UrlHelper url, string returnUrl)
+        public static string LogOn(this UrlHelper url, string returnUrl) 
         {
-            return url.RouteUrl(RouteName.Authentication, new { action = "LogOn", returnUrl = returnUrl });
+            return url.Action("LogOn", "Authentication", new {returnUrl = returnUrl});
         }
 
         public static string ConfirmationRequired(this UrlHelper url)

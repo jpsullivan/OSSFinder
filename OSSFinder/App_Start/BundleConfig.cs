@@ -19,6 +19,11 @@ namespace OSSFinder.App_Start
             //libCss.Transforms.Add(cssTransformer);
             bundles.Add(libCss);
 
+            // App CSS
+            Bundle appCss = new Bundle("~/bundles/css_app").Include("~/Content/css/app/bootstrap.less", new CssRewriteUrlTransform());
+            appCss.Transforms.Add(cssTransformer);
+            bundles.Add(appCss);
+
 //            // App CSS
 //            Bundle appCss = new Bundle("~/bundles/css_app").Include("~/Content/less/app/bootstrap.less", new CssRewriteUrlTransform());
 //            appCss.Transforms.Add(cssTransformer);

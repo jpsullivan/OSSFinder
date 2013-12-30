@@ -40,6 +40,7 @@ namespace OSSFinder.Controllers
         /// Sign In\Register view
         /// </summary>
         [RequireSsl]
+        [Route("account/logon")]
         public virtual ActionResult LogOn(string returnUrl)
         {
             // I think it should be obvious why we don't want the current URL to be the return URL here ;)
@@ -54,9 +55,9 @@ namespace OSSFinder.Controllers
             return LogOnView();
         }
 
-        [HttpPost]
         [RequireSsl]
         [ValidateAntiForgeryToken]
+        [Route("account/signin"), AcceptVerbs(HttpVerbs.Post)]
         public virtual async Task<ActionResult> SignIn(LogOnViewModel model, string returnUrl, bool linkingAccount)
         {
             // I think it should be obvious why we don't want the current URL to be the return URL here ;)
@@ -99,9 +100,9 @@ namespace OSSFinder.Controllers
             return SafeRedirect(returnUrl);
         }
 
-        [HttpPost]
         [RequireSsl]
         [ValidateAntiForgeryToken]
+        [Route("account/register"), AcceptVerbs(HttpVerbs.Post)]
         public async virtual Task<ActionResult> Register(LogOnViewModel model, string returnUrl, bool linkingAccount)
         {
             // I think it should be obvious why we don't want the current URL to be the return URL here ;)
@@ -126,7 +127,6 @@ namespace OSSFinder.Controllers
             AuthenticatedUser user;
             try
             {
-
                 if (linkingAccount)
                 {
                     var result = await AuthService.ReadExternalLoginCredential(OwinContext);
@@ -175,6 +175,7 @@ namespace OSSFinder.Controllers
             return SafeRedirect(returnUrl);
         }
 
+        [Route("users/account/authenticate/{provider}")]
         public virtual ActionResult Authenticate(string returnUrl, string provider)
         {
             return AuthService.Challenge(
@@ -182,6 +183,7 @@ namespace OSSFinder.Controllers
                 Url.Action("LinkExternalAccount", "Authentication", new { ReturnUrl = returnUrl }));
         }
 
+        [Route("users/account/authenticate/return")]
         public async virtual Task<ActionResult> LinkExternalAccount(string returnUrl)
         {
             // Extract the external login info
