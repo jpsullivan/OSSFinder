@@ -15,7 +15,7 @@
     @Styles.Render("~/bundles/css_app")
 </head>
 <body class="aui-layout aui-page-focused aui-page-focused-medium">
-    <div id="page" class="login">
+    <div id="page">
         @(User.Identity.IsAuthenticated ? Html.Partial("_AuthenticatedHeader") : Html.Partial("_UnauthenticatedHeader"))
 
         <section id="content" role="main">

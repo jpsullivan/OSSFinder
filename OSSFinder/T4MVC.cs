@@ -363,6 +363,9 @@ namespace Links {
                 public static readonly string bootstrap_less = Url("bootstrap.less");
                 public static readonly string bootstrap_css = Url("bootstrap.css");
                 public static readonly string bootstrap_min_css = Url("bootstrap.min.css");
+                public static readonly string focused_less = Url("focused.less");
+                public static readonly string focused_css = Url("focused.css");
+                public static readonly string focused_min_css = Url("focused.min.css");
                 public static readonly string login_less = Url("login.less");
                 public static readonly string login_css = Url("login.css");
                 public static readonly string login_min_css = Url("login.min.css");

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using OSSFinder.Configuration;
 using OSSFinder.Entities;
+using OSSFinder.Infrastructure.Attributes;
 using OSSFinder.Services.Interfaces;
 
 namespace OSSFinder.Controllers
@@ -32,6 +33,13 @@ namespace OSSFinder.Controllers
         }
 
         public virtual ActionResult Index()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [Route("project/new")]
+        public virtual ActionResult New() 
         {
             return View();
         }

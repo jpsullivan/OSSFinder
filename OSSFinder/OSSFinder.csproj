@@ -522,6 +522,12 @@
     <Content Include="Content\css\app\bootstrap.min.css">
       <DependentUpon>bootstrap.less</DependentUpon>
     </Content>
+    <Content Include="Content\css\app\focused.css">
+      <DependentUpon>focused.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\app\focused.min.css">
+      <DependentUpon>focused.less</DependentUpon>
+    </Content>
     <Content Include="Content\css\app\login.css">
       <DependentUpon>login.less</DependentUpon>
     </Content>
@@ -631,6 +637,7 @@
     </None>
     <Content Include="Content\css\app\bootstrap.less" />
     <Content Include="Content\css\app\login.less" />
+    <Content Include="Content\css\app\focused.less" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <EmbeddedResource Include="Infrastructure\Elmah.SqlServer.sql" />
@@ -702,6 +709,8 @@
     <Content Include="Views\Shared\_AuthenticatedHeader.cshtml" />
     <Content Include="Views\Shared\_UnauthenticatedHeader.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Views\Projects\New.cshtml" />
+    <Content Include="Views\Shared\_FocusedLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />

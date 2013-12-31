@@ -78,7 +78,6 @@ namespace OSSFinder
 
         public static string Register(this UrlHelper url, string returnUrl)
         {
-            //return url.Action(MVC.Authentication.Register());
             return url.Action("Register", "Authentication", new {returnUrl = returnUrl});
         }
 
@@ -86,6 +85,11 @@ namespace OSSFinder
         {
             string result = url.Action(MVC.Users.Profiles(user.Username), protocol: scheme);
             return EnsureTrailingSlash(result);
+        }
+
+        public static string NewProject(this UrlHelper url) 
+        {
+            return url.Action("New", "Projects");
         }
 
         private static UriBuilder GetCanonicalUrl(UrlHelper url)
