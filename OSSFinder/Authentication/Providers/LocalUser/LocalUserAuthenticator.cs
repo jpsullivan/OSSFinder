@@ -20,7 +20,7 @@ namespace OSSFinder.Authentication.Providers.LocalUser
                 AuthenticationMode = AuthenticationMode.Active,
                 CookieHttpOnly = true,
                 CookieSecure = cookieSecurity,
-                LoginPath = new PathString("/users/account/LogOn")
+                LoginPath = new PathString("/account/logon")
             };
 
             BaseConfig.ApplyToOwinSecurityOptions(options);
