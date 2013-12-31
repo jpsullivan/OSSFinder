@@ -89,6 +89,32 @@ namespace OSSFinder.Entities
                 .WithMany()
                 .HasForeignKey(em => em.FromUserKey);
 
+            modelBuilder.Entity<ProjectRegistration>()
+                .HasKey(pr => pr.Key);
+
+            modelBuilder.Entity<ProjectRegistration>()
+                .HasMany<Project>(pr => pr.Projects)
+                .WithRequired(p => p.ProjectRegistration)
+                .HasForeignKey(p => p.ProjectRegistrationKey);
+
+            modelBuilder.Entity<ProjectRegistration>()
+                .HasMany<User>(pr => pr.Owners)
+                .WithMany()
+                .Map(c => c.ToTable("PackageRegistrationOwners")
+                           .MapLeftKey("PackageRegistrationKey")
+                           .MapRightKey("UserKey"));
+
+            modelBuilder.Entity<Project>()
+                .HasKey(p => p.Key);
+
+            modelBuilder.Entity<Project>()
+                .HasMany<ProjectAuthor>(p => p.Authors)
+                .WithRequired(pa => pa.Project)
+                .HasForeignKey(pa => pa.ProjectKey);
+
+            modelBuilder.Entity<ProjectAuthor>()
+               .HasKey(pa => pa.Key);
+
             modelBuilder.Entity<SiteSetting>()
                 .HasKey(gs => gs.Key);
         }

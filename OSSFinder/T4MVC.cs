@@ -28,6 +28,7 @@ public static class MVC {
     public static OSSFinder.Controllers.AuthenticationController Authentication = new OSSFinder.Controllers.T4MVC_AuthenticationController();
     public static OSSFinder.Controllers.ErrorsController Errors = new OSSFinder.Controllers.T4MVC_ErrorsController();
     public static OSSFinder.Controllers.HomeController Home = new OSSFinder.Controllers.T4MVC_HomeController();
+    public static OSSFinder.Controllers.ProjectsController Projects = new OSSFinder.Controllers.T4MVC_ProjectsController();
     public static OSSFinder.Controllers.UsersController Users = new OSSFinder.Controllers.T4MVC_UsersController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }

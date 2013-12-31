@@ -66,12 +66,24 @@ namespace OSSFinder.App_Start
                 .To<EntityRepository<User>>()
                 .InRequestScope();
 
+            Bind<IEntityRepository<ProjectRegistration>>()
+                .To<EntityRepository<ProjectRegistration>>()
+                .InRequestScope();
+
+            Bind<IEntityRepository<Project>>()
+                .To<EntityRepository<Project>>()
+                .InRequestScope();
+
             Bind<IEntityRepository<Credential>>()
                 .To<EntityRepository<Credential>>()
                 .InRequestScope();
 
             Bind<IUserService>()
                 .To<UserService>()
+                .InRequestScope();
+
+            Bind<IProjectService>()
+                .To<ProjectService>()
                 .InRequestScope();
 
             Bind<IFormsAuthenticationService>()

@@ -346,6 +346,7 @@
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Diagnostics\AuthenticationGlimpseTab.cs" />
     <Compile Include="Diagnostics\ConcurrentInMemoryPersistenceStore.cs" />
@@ -365,6 +366,9 @@
     <Compile Include="Entities\IEntitiesContext.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\IEntityRepository.cs" />
+    <Compile Include="Entities\Project.cs" />
+    <Compile Include="Entities\ProjectAuthor.cs" />
+    <Compile Include="Entities\ProjectRegistration.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\SiteSetting.cs" />
     <Compile Include="Entities\User.cs" />
@@ -426,6 +430,10 @@
     <Compile Include="Migrations\201312290348013_ExecuteELMAHSql.Designer.cs">
       <DependentUpon>201312290348013_ExecuteELMAHSql.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312302147166_AddProjectsAndAuthors.cs" />
+    <Compile Include="Migrations\201312302147166_AddProjectsAndAuthors.Designer.cs">
+      <DependentUpon>201312302147166_AddProjectsAndAuthors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SqlResourceMigration.cs" />
     <Compile Include="Models\StatisticsReport.cs" />
@@ -435,6 +443,9 @@
     <Compile Include="Models\ViewModels\LogOnViewModel.cs" />
     <Compile Include="Models\ViewModels\PasswordResetViewModel.cs" />
     <Compile Include="Models\ViewModels\UserProfileModel.cs" />
+    <Compile Include="ProjectsController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RouteNames.cs" />
     <Compile Include="Services\CloudBlobClientWrapper.cs" />
@@ -458,12 +469,14 @@
     <Compile Include="Services\Interfaces\IFileSystemService.cs" />
     <Compile Include="Services\Interfaces\IFormsAuthenticationService.cs" />
     <Compile Include="Services\Interfaces\IMessageService.cs" />
+    <Compile Include="Services\Interfaces\IProjectService.cs" />
     <Compile Include="Services\Interfaces\IReportService.cs" />
     <Compile Include="Services\Interfaces\ISimpleCloudBlob.cs" />
     <Compile Include="Services\Interfaces\IStatisticsService.cs" />
     <Compile Include="Services\Interfaces\IUserService.cs" />
     <Compile Include="Services\LocalFileReference.cs" />
     <Compile Include="Services\MessageService.cs" />
+    <Compile Include="Services\ProjectService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -684,6 +697,7 @@
     <Content Include="Views\Shared\_LogOnLayout.cshtml" />
     <Content Include="Views\Shared\_AuthenticatedHeader.cshtml" />
     <Content Include="Views\Shared\_UnauthenticatedHeader.cshtml" />
+    <Content Include="Views\Projects\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />
@@ -700,6 +714,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312290348013_ExecuteELMAHSql.resx">
       <DependentUpon>201312290348013_ExecuteELMAHSql.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312302147166_AddProjectsAndAuthors.resx">
+      <DependentUpon>201312302147166_AddProjectsAndAuthors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
