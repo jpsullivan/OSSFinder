@@ -434,6 +434,10 @@
     <Compile Include="Migrations\201312302147166_AddProjectsAndAuthors.Designer.cs">
       <DependentUpon>201312302147166_AddProjectsAndAuthors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312310746240_InitialProjectsAndProjectRegistrations.cs" />
+    <Compile Include="Migrations\201312310746240_InitialProjectsAndProjectRegistrations.Designer.cs">
+      <DependentUpon>201312310746240_InitialProjectsAndProjectRegistrations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SqlResourceMigration.cs" />
     <Compile Include="Models\StatisticsReport.cs" />
@@ -717,6 +721,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312302147166_AddProjectsAndAuthors.resx">
       <DependentUpon>201312302147166_AddProjectsAndAuthors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312310746240_InitialProjectsAndProjectRegistrations.resx">
+      <DependentUpon>201312310746240_InitialProjectsAndProjectRegistrations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
