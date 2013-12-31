@@ -1,3 +1,7 @@
+.aui-page-focused .aui-header-inner {
+  margin: 0 auto;
+  width: 1000px;
+}
 .aui-page-focused .aui-page-panel-content {
   padding: 30px;
 }
@@ -9,4 +13,8 @@
 .aui-page-focused .aui-page-panel-content input.text,
 .aui-page-focused .aui-page-panel-content input.password {
   max-width: inherit;
+}
+.aui-page-focused.focused-wizard .aui-page-header-actions .aui-progress-tracker {
+  padding: 10px 0;
+  width: 400px;
 }

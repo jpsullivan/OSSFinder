@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/lib/aui/aui-all.css")" media="all">
+    <!--[if lt IE 9]><link rel="stylesheet" href="@Url.Content("/Content/css/lib/aui/aui-ie.css")" media="all"><![endif]-->
+    <!--[if IE 9]><link rel="stylesheet" href="@Url.Content("/Content/css/lib/aui/aui-ie9.css")" media="all"><![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="@Url.Content("~/Content/js/lib/aui/aui-all.js")"></script>
+    <!--[if lt IE 9]><script src="@Url.Content("~/Content/js/lib/aui/aui-ie.js")"></script><![endif]-->
+    
+    @Styles.Render("~/bundles/css_app")
+</head>
+<body class="aui-layout aui-page-focused aui-page-focused-medium focused-wizard">
+    <div id="page">
+        @(User.Identity.IsAuthenticated ? Html.Partial("_AuthenticatedHeader") : Html.Partial("_UnauthenticatedHeader"))
+
+        <section id="content" role="main">
+            @RenderBody()
+        </section>
+
+        <footer id="footer" role="contentinfo">
+            <section class="footer-body">
+                <ul>
+                    <li>Copyright &copy; 2013 <a href="http://www.atlassian.com" targte="_blank">Atlassian</a>. All rights reserved</li>
+                    <li><a href="http://atlassian.com/company/trademark" target="_blank">Trademark</a></li>
+                    <li><a href="http://atlassian.com/company/privacy" target="_blank">Privacy</a></li>
+                    <li>Version 1.1</li>
+                    <li><a href="#" onclick="_gaq.push(['_trackEvent', 'Feedback Footer Link', 'Clicked', 'Feedback Footer Link Click']);" class="feedbackCollector">Give feedback</a></li>
+                    <li><a href="changelog.html">Changelog</a></li>
+                </ul>
+                <div id="footer-logo"><a href="http://www.atlassian.com/" target="_blank">Atlassian</a></div>
+            </section>
+        </footer>
+    </div>
+</body>
+</html>

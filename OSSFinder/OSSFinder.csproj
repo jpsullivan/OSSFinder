@@ -711,6 +711,7 @@
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Projects\New.cshtml" />
     <Content Include="Views\Shared\_FocusedLayout.cshtml" />
+    <Content Include="Views\Shared\_FocusedWizardLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />
