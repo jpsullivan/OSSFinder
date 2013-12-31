@@ -365,6 +365,15 @@ namespace OSSFinder {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OSS Finder.
+        /// </summary>
+        internal static string ProductName {
+            get {
+                return ResourceManager.GetString("ProductName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The requested resource can only be accessed via SSL..
         /// </summary>
         internal static string SSLRequired {

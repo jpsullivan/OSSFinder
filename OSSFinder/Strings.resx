@@ -250,4 +250,7 @@ The {2} Team</value>
   <data name="CloudAuditingService_DuplicateAuditRecord" xml:space="preserve">
     <value>Unable to write audit record: '{0}'. Record already exists.</value>
   </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>OSS Finder</value>
+  </data>
 </root>
