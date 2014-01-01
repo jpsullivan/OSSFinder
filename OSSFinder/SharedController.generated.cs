@@ -31,6 +31,7 @@ namespace T4MVC {
             public readonly string _AuthenticatedHeader = "~/Views/Shared/_AuthenticatedHeader.cshtml";
             public readonly string _FocusedLayout = "~/Views/Shared/_FocusedLayout.cshtml";
             public readonly string _FocusedWizardLayout = "~/Views/Shared/_FocusedWizardLayout.cshtml";
+            public readonly string _Footer = "~/Views/Shared/_Footer.cshtml";
             public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
             public readonly string _LogOnLayout = "~/Views/Shared/_LogOnLayout.cshtml";
             public readonly string _UnauthenticatedHeader = "~/Views/Shared/_UnauthenticatedHeader.cshtml";
