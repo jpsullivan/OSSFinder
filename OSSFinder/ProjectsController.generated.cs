@@ -31,6 +31,11 @@ namespace OSSFinder.Controllers {
             return RedirectToRoute(callInfo.RouteValueDictionary);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult ProcessStep1() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.ProcessStep1);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ProjectsController Actions { get { return MVC.Projects; } }
@@ -46,6 +51,7 @@ namespace OSSFinder.Controllers {
         public class ActionNamesClass {
             public readonly string Index = "Index";
             public readonly string New = "New";
+            public readonly string ProcessStep1 = "ProcessStep1";
         }
 
 
@@ -55,7 +61,7 @@ namespace OSSFinder.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string Index = "~/Views/Projects/Index.cshtml";
-            public readonly string New = "~/Views/Projects/New.cshtml";
+            public readonly string New_Step1 = "~/Views/Projects/New_Step1.cshtml";
         }
     }
 
@@ -70,6 +76,12 @@ namespace OSSFinder.Controllers {
 
         public override System.Web.Mvc.ActionResult New() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.New);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ProcessStep1(OSSFinder.Models.ViewModels.NewProjectStep1 model) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ProcessStep1);
+            callInfo.RouteValueDictionary.Add("model", model);
             return callInfo;
         }
 

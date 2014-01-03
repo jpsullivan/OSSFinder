@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OSSFinder.Configuration;
 using OSSFinder.Entities;
 using OSSFinder.Infrastructure.Attributes;
+using OSSFinder.Models.ViewModels;
 using OSSFinder.Services.Interfaces;
 
 namespace OSSFinder.Controllers
@@ -41,7 +43,14 @@ namespace OSSFinder.Controllers
         [Route("project/new")]
         public virtual ActionResult New() 
         {
-            return View();
+            return View("New_Step1", new NewProjectStep1());
+        }
+
+        [Authorize]
+        [Route("project/process_step_1")]
+        public virtual ActionResult ProcessStep1(NewProjectStep1 model)
+        {
+            return new EmptyResult();
         }
     }
 }

@@ -448,6 +448,7 @@
     <Compile Include="Models\ViewModels\ConfirmationViewModel.cs" />
     <Compile Include="Models\ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="Models\ViewModels\LogOnViewModel.cs" />
+    <Compile Include="Models\ViewModels\NewProjectViewModel.cs" />
     <Compile Include="Models\ViewModels\PasswordResetViewModel.cs" />
     <Compile Include="Models\ViewModels\UserProfileModel.cs" />
     <Compile Include="ProjectsController.generated.cs">
@@ -712,7 +713,7 @@
     <Content Include="Views\Shared\_AuthenticatedHeader.cshtml" />
     <Content Include="Views\Shared\_UnauthenticatedHeader.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
-    <Content Include="Views\Projects\New.cshtml" />
+    <Content Include="Views\Projects\New_Step1.cshtml" />
     <Content Include="Views\Shared\_FocusedLayout.cshtml" />
     <Content Include="Views\Shared\_FocusedWizardLayout.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />

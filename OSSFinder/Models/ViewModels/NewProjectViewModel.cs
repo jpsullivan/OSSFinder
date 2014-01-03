@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 using OSSFinder.Infrastructure.Attributes;
 
 namespace OSSFinder.Models.ViewModels
@@ -19,7 +15,7 @@ namespace OSSFinder.Models.ViewModels
         [Required]
         [Display(Name = "Repository URL")]
         [Hint("Enter in the repository URL for this project")]
-        public Uri RepositoryUrl { get; set; }
+        public string RepositoryUrl { get; set; }
 
         [Required]
         [Display(Name = "Project Name")]
@@ -33,5 +29,12 @@ namespace OSSFinder.Models.ViewModels
         public string Language { get; set; }
 
         public NewProjectStep1() { }
+
+        public NewProjectStep1(string repositoryUrl, string name, string desc)
+        {
+            RepositoryUrl = repositoryUrl;
+            Name = name;
+            Description = desc;
+        }
     }
 }

@@ -1,0 +1,65 @@
+﻿@using OSSFinder.Infrastructure.Extensions
+@model OSSFinder.Models.ViewModels.NewProjectStep1
+@{
+    ViewBag.Title = "Add a Project";
+    Layout = "../Shared/_FocusedWizardLayout.cshtml";
+}
+
+<header class="aui-page-header">
+    <div class="aui-page-header-inner">
+        <div class="aui-page-header-main">
+            <h1>Add a Project</h1>
+        </div>
+        <div class="aui-page-header-actions">
+            <ol class="aui-progress-tracker aui-progress-tracker-inverted">
+                <li class="aui-progress-tracker-step aui-progress-tracker-step-current"><a href="#1">Name and Description</a></li>
+                <li class="aui-progress-tracker-step aui-progress-tracker-step-current"><span>Project Dependencies</span></li>
+                <li class="aui-progress-tracker-step"><span>Project/Publish Settings</span></li>
+            </ol>
+        </div>
+    </div>
+</header>
+<div class="aui-page-panel">
+    <div class="aui-page-panel-inner">
+        <section class="aui-page-panel-content">
+            <h2>Name and Description</h2>
+            
+            @using (Html.BeginForm("ProcessStep1", "Projects", FormMethod.Post, new { @class = "aui" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <fieldset>
+                    <div class="field-group">
+                        @Html.LabelFor(m => m.RepositoryUrl)
+                        @Html.TextBoxFor(m => m.RepositoryUrl, new { @class = "text" })
+                        <div class="description">Eg. AT (for a project named Atlassian)</div>
+                        @Html.ValidationMessageFor(m => m.RepositoryUrl)
+                    </div>
+                    
+                    <div class="field-group">
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, new { @class = "text" })
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                    
+                    <div class="field-group">
+                        @Html.LabelFor(m => m.Description)
+                        @Html.TextAreaFor(m => m.Description, new { @class = "textarea long-field", @rows = 3 })
+                        @Html.ValidationMessageFor(m => m.Description)
+                    </div>
+                    
+                    <div class="field-group">
+                        @Html.LabelFor(m => m.Language)
+                        @Html.TextBoxFor(m => m.Language, new { @class = "text" })
+                        @Html.ValidationMessageFor(m => m.Language)
+                    </div>
+                </fieldset>
+                <div class="buttons-container">
+                    <div class="buttons">
+                        <input class="aui-button aui-button-primary" type="submit" id="submit" name="submit" value="Next">
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+</div>
