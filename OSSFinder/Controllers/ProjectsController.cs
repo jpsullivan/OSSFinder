@@ -43,14 +43,25 @@ namespace OSSFinder.Controllers
         [Route("project/new")]
         public virtual ActionResult New() 
         {
-            return View("New_Step1", new NewProjectStep1());
+            return View("New_Step1", new NewProjectViewModel());
         }
 
         [Authorize]
         [Route("project/process_step_1")]
-        public virtual ActionResult ProcessStep1(NewProjectStep1 model)
+        public virtual ActionResult ProcessStep1(NewProjectViewModel model)
         {
             return new EmptyResult();
+        }
+
+        [Authorize]
+        [Route("project/new_step2")]
+        public virtual ActionResult NewStep2(NewProjectViewModel model)
+        {
+            if (model == null) {
+                return RedirectToAction("New");
+            }
+
+            return View("New_Step2", model);
         }
     }
 }

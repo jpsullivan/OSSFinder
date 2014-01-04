@@ -36,6 +36,11 @@ namespace OSSFinder.Controllers {
         public System.Web.Mvc.ActionResult ProcessStep1() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.ProcessStep1);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult NewStep2() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.NewStep2);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ProjectsController Actions { get { return MVC.Projects; } }
@@ -52,6 +57,7 @@ namespace OSSFinder.Controllers {
             public readonly string Index = "Index";
             public readonly string New = "New";
             public readonly string ProcessStep1 = "ProcessStep1";
+            public readonly string NewStep2 = "NewStep2";
         }
 
 
@@ -62,6 +68,7 @@ namespace OSSFinder.Controllers {
         public class ViewNames {
             public readonly string Index = "~/Views/Projects/Index.cshtml";
             public readonly string New_Step1 = "~/Views/Projects/New_Step1.cshtml";
+            public readonly string New_Step2 = "~/Views/Projects/New_Step2.cshtml";
         }
     }
 
@@ -79,8 +86,14 @@ namespace OSSFinder.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult ProcessStep1(OSSFinder.Models.ViewModels.NewProjectStep1 model) {
+        public override System.Web.Mvc.ActionResult ProcessStep1(OSSFinder.Models.ViewModels.NewProjectViewModel model) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ProcessStep1);
+            callInfo.RouteValueDictionary.Add("model", model);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult NewStep2(OSSFinder.Models.ViewModels.NewProjectViewModel model) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.NewStep2);
             callInfo.RouteValueDictionary.Add("model", model);
             return callInfo;
         }

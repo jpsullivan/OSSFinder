@@ -37,4 +37,9 @@ namespace OSSFinder.Models.ViewModels
             Description = desc;
         }
     }
+
+    public class NewProjectStep2
+    {
+        
+    }
 }
