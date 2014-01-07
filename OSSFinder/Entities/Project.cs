@@ -21,15 +21,12 @@ namespace OSSFinder.Entities
 
         public DateTime Created { get; set; }
 
+        public virtual ICollection<ProjectDependency> Dependencies { get; set; }
+
         /// <remarks>
         /// Has a max length of 4000. Is not indexed but *IS* used for searches. Db column is nvarchar(max).
         /// </remarks>
         public string Description { get; set; }
-
-        /// <remarks>
-        /// Has a max length of 4000. Is not indexed and not used for searches. Db column is nvarchar(max).
-        /// </remarks>
-        public string ReleaseNotes { get; set; }
 
         public int DownloadCount { get; set; }
 

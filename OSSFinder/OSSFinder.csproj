@@ -371,6 +371,7 @@
     <Compile Include="Entities\IEntityRepository.cs" />
     <Compile Include="Entities\Project.cs" />
     <Compile Include="Entities\ProjectAuthor.cs" />
+    <Compile Include="Entities\ProjectDependency.cs" />
     <Compile Include="Entities\ProjectRegistration.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\SiteSetting.cs" />
@@ -441,8 +442,13 @@
     <Compile Include="Migrations\201312310746240_InitialProjectsAndProjectRegistrations.Designer.cs">
       <DependentUpon>201312310746240_InitialProjectsAndProjectRegistrations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201401070719384_ProjectDependencies.cs" />
+    <Compile Include="Migrations\201401070719384_ProjectDependencies.Designer.cs">
+      <DependentUpon>201401070719384_ProjectDependencies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SqlResourceMigration.cs" />
+    <Compile Include="Models\Language.cs" />
     <Compile Include="Models\StatisticsReport.cs" />
     <Compile Include="Models\ViewModels\AccountViewModel.cs" />
     <Compile Include="Models\ViewModels\ConfirmationViewModel.cs" />
@@ -717,6 +723,7 @@
     <Content Include="Views\Shared\_FocusedLayout.cshtml" />
     <Content Include="Views\Shared\_FocusedWizardLayout.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Projects\New_Step2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />
@@ -739,6 +746,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312310746240_InitialProjectsAndProjectRegistrations.resx">
       <DependentUpon>201312310746240_InitialProjectsAndProjectRegistrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401070719384_ProjectDependencies.resx">
+      <DependentUpon>201401070719384_ProjectDependencies.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>

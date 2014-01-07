@@ -112,8 +112,16 @@ namespace OSSFinder.Entities
                 .WithRequired(pa => pa.Project)
                 .HasForeignKey(pa => pa.ProjectKey);
 
+            modelBuilder.Entity<Project>()
+                .HasMany<ProjectDependency>(p => p.Dependencies)
+                .WithRequired(pd => pd.Project)
+                .HasForeignKey(pd => pd.ProjectKey);
+
             modelBuilder.Entity<ProjectAuthor>()
                .HasKey(pa => pa.Key);
+
+            modelBuilder.Entity<ProjectDependency>()
+                .HasKey(pd => pd.Key);
 
             modelBuilder.Entity<SiteSetting>()
                 .HasKey(gs => gs.Key);
