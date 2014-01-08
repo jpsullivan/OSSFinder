@@ -12,7 +12,7 @@ namespace OSSFinder.Entities
         }
 
         /// <summary>
-        /// The NuGet Gallery code should usually use this constructor, in order to respect read only mode.
+        /// The OSSFinder code should usually use this constructor, in order to respect read only mode.
         /// </summary>
         public EntitiesContext(string connectionString, bool readOnly)
             : base(connectionString)
@@ -89,6 +89,15 @@ namespace OSSFinder.Entities
                 .WithMany()
                 .HasForeignKey(em => em.FromUserKey);
 
+            modelBuilder.Entity<Dependency>()
+                .HasKey(d => d.Key);
+
+            modelBuilder.Entity<DependencyType>()
+                .HasKey(d => d.Key);
+
+            modelBuilder.Entity<DependencyVersion>()
+                .HasKey(dv => dv.Key);
+
             modelBuilder.Entity<ProjectRegistration>()
                 .HasKey(pr => pr.Key);
 
@@ -100,8 +109,8 @@ namespace OSSFinder.Entities
             modelBuilder.Entity<ProjectRegistration>()
                 .HasMany<User>(pr => pr.Owners)
                 .WithMany()
-                .Map(c => c.ToTable("PackageRegistrationOwners")
-                           .MapLeftKey("PackageRegistrationKey")
+                .Map(c => c.ToTable("ProjectRegistrationOwners")
+                           .MapLeftKey("ProjectRegistrationKey")
                            .MapRightKey("UserKey"));
 
             modelBuilder.Entity<Project>()

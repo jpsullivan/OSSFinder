@@ -362,6 +362,9 @@
     <Compile Include="Diagnostics\NullDiagnosticsSource.cs" />
     <Compile Include="Diagnostics\TraceDiagnosticsSource.cs" />
     <Compile Include="Entities\Credential.cs" />
+    <Compile Include="Entities\Dependency.cs" />
+    <Compile Include="Entities\DependencyType.cs" />
+    <Compile Include="Entities\DependencyVersion.cs" />
     <Compile Include="Entities\EmailMessage.cs" />
     <Compile Include="Entities\EntitiesContext.cs" />
     <Compile Include="Entities\EntityException.cs" />
